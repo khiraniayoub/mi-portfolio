@@ -533,6 +533,7 @@ section {
 }
 
 .project-video,
+.project-image,
 .project-video-fallback {
     grid-area: 1 / 1;
     width: 100%;
@@ -540,7 +541,8 @@ section {
     border-radius: 11px;
 }
 
-.project-video {
+.project-video,
+.project-image {
     object-fit: cover;
     object-position: center top;
     display: block;

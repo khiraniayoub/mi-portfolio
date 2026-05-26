@@ -80,6 +80,11 @@ const projectVideos = {
     AvisosMedicos: "videos/AvisosMedicos.mp4",
 };
 
+// Ruta de la imagen por proyecto (opcional).
+const projectImages = {
+    wback: "wback.png",
+};
+
 const projectDescriptions = {
     edfix:
         'EVC - <a href="https://edfix.es" target="_blank" rel="noopener noreferrer" class="project-desc-link">EDfix.es</a> es una landing one-page en React para un taller de reparación de dispositivos en Málaga, ligado al canal de YouTube EVCanal. Concentra en un solo sitio la captación de clientes (formulario de presupuesto con EmailJS), la información del negocio (servicios, precios, reseñas, galería de trabajos, ubicación y contacto) y contenido tech (vídeo del canal, noticias vía GNews y productos recomendados). Está pensada para convertir visitas en solicitudes de presupuesto.',
@@ -128,8 +133,23 @@ function setupProjectVideo(video, fallback) {
 function createProjectCard({ name, description, language, repoUrl, descriptionIsHtml = false }) {
     const iconClass = getLanguageIcon(language);
     const videoSrc = getVideoSrc(name);
+    const imageSrc = projectImages[name.toLowerCase()];
+    const hasImage = Boolean(imageSrc);
+
     const card = document.createElement("article");
     card.className = "project-card";
+
+    const mediaHTML = hasImage
+        ? `<img class="project-image" src="${imageSrc}" alt="Captura de ${name}">`
+        : `
+            <video class="project-video" controls playsinline preload="metadata" aria-label="Demo de ${name}">
+                <source src="${videoSrc}" type="video/mp4">
+            </video>
+            <div class="project-video-fallback">
+                <i class="fa-solid fa-circle-play" aria-hidden="true"></i>
+                <p>Añade un video corto en<br><code>videos/${name}.mp4</code></p>
+            </div>
+        `;
 
     card.innerHTML = `
         <div class="project-body">
@@ -144,13 +164,7 @@ function createProjectCard({ name, description, language, repoUrl, descriptionIs
             </div>
         </div>
         <div class="project-media">
-            <video class="project-video" controls playsinline preload="metadata" aria-label="Demo de ${name}">
-                <source src="${videoSrc}" type="video/mp4">
-            </video>
-            <div class="project-video-fallback">
-                <i class="fa-solid fa-circle-play" aria-hidden="true"></i>
-                <p>Añade un video corto en<br><code>videos/${name}.mp4</code></p>
-            </div>
+            ${mediaHTML}
         </div>
     `;
 
@@ -161,7 +175,9 @@ function createProjectCard({ name, description, language, repoUrl, descriptionIs
         descEl.textContent = description;
     }
 
-    setupProjectVideo(card.querySelector(".project-video"), card.querySelector(".project-video-fallback"));
+    if (!hasImage) {
+        setupProjectVideo(card.querySelector(".project-video"), card.querySelector(".project-video-fallback"));
+    }
 
     return card;
 }
