@@ -72,6 +72,8 @@ window.addEventListener("scroll", () => {
 const githubUsername = "khiraniayoub";
 const projectsContainer = document.getElementById("github-projects");
 
+const excludedRepos = ["mi-portfolio", "portfolio"];
+
 // Ruta del video por proyecto (opcional). Si no está aquí, se usa videos/<nombre-repo>.mp4
 const projectVideos = {
     edfix: "videos/edfix.mp4",
@@ -169,7 +171,12 @@ async function fetchGitHubProjects() {
             throw new Error("Network response was not ok");
         }
         const repos = await response.json();
-        const validRepos = repos.filter((repo) => !repo.fork && repo.name !== githubUsername);
+        const validRepos = repos.filter(
+            (repo) =>
+                !repo.fork &&
+                repo.name !== githubUsername &&
+                !excludedRepos.includes(repo.name.toLowerCase())
+        );
 
         if (validRepos.length === 0) {
             projectsContainer.innerHTML = "<p>No se encontraron proyectos públicos.</p>";
