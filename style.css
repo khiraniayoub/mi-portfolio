@@ -14,6 +14,7 @@
     --card-border: rgba(255, 255, 255, 0.05);
 
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --project-video-ratio: 16 / 9;
 }
 
 * {
@@ -110,7 +111,7 @@ nav {
 }
 
 .nav-logo {
-    height: 50px;
+    height: 80px;
     width: auto;
     mix-blend-mode: screen;
     filter: drop-shadow(0 0 10px var(--primary-glow));
@@ -298,6 +299,12 @@ section {
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.github-btn .fa-brands.fa-github,
+.contact-action-btn .fa-brands.fa-github {
+    font-size: 2em;
+    line-height: 1;
+}
+
 .github-btn {
     position: relative;
     border: none;
@@ -480,7 +487,7 @@ section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
-    align-items: stretch;
+    align-items: center;
     width: 100%;
 }
 
@@ -490,16 +497,39 @@ section {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
+.project-card:hover .project-media {
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        0 16px 48px rgba(0, 0, 0, 0.5),
+        0 0 36px rgba(72, 202, 228, 0.28);
+}
+
 .project-media {
     position: relative;
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 12px;
-    padding: 0.75rem;
-    min-height: 0;
+    align-self: center;
+    width: 100%;
+    aspect-ratio: var(--project-video-ratio);
+    padding: 3px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.08),
+        0 12px 40px rgba(0, 0, 0, 0.45),
+        0 0 24px rgba(72, 202, 228, 0.15);
     display: grid;
-    place-items: center;
-    aspect-ratio: 16 / 9;
     overflow: hidden;
+    line-height: 0;
+    transition: var(--transition);
+}
+
+.project-media::before {
+    content: "";
+    position: absolute;
+    inset: 3px;
+    border-radius: 11px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: 2;
 }
 
 .project-video,
@@ -507,14 +537,17 @@ section {
     grid-area: 1 / 1;
     width: 100%;
     height: 100%;
+    border-radius: 11px;
 }
 
 .project-video {
-    object-fit: contain;
+    object-fit: cover;
+    object-position: center top;
     display: block;
     background: #0a0f1a;
-    border-radius: 8px;
+    border: none;
     cursor: auto;
+    z-index: 1;
 }
 
 .project-video.is-hidden {
@@ -530,6 +563,9 @@ section {
     padding: 2rem;
     text-align: center;
     color: var(--text-muted);
+    background: #0a0f1a;
+    line-height: 1.5;
+    z-index: 1;
 }
 
 .project-video-fallback.is-visible {
@@ -573,9 +609,22 @@ section {
 
 .project-desc {
     color: var(--text-muted);
-    font-size: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
     margin-bottom: 1.5rem;
     flex-grow: 1;
+}
+
+.project-desc-link {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: var(--transition);
+}
+
+.project-desc-link:hover {
+    color: var(--accent);
 }
 
 .project-meta {
@@ -599,7 +648,11 @@ section {
 .project-link {
     color: var(--text-main);
     transition: var(--transition);
-    font-size: 1.2rem;
+    font-size: 2.4rem;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .project-link:hover {
@@ -640,31 +693,41 @@ section {
     margin-right: auto;
 }
 
-.social-links {
-    margin-top: 3rem;
+.contact-buttons {
     display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-}
-
-.social-links a {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.05);
-    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    transition: var(--transition);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    gap: 2.25rem;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
 }
 
-.social-links a:hover {
-    background: var(--primary);
-    color: white;
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px var(--primary-glow);
+.contact-main-btn,
+.contact-action-btn {
+    width: 100%;
+    justify-content: center;
+}
+
+.contact-actions {
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+}
+
+.contact-action-btn {
+    flex: 1;
+    min-width: 0;
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+@media (max-width: 520px) {
+    .contact-actions {
+        flex-direction: column;
+        gap: 1.25rem;
+    }
 }
 
 /* Footer */
@@ -788,7 +851,6 @@ footer {
     }
 
     .project-media {
-        aspect-ratio: 16 / 9;
-        width: 100%;
+        max-width: 100%;
     }
 }

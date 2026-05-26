@@ -17,7 +17,7 @@ document.addEventListener("mousemove", (e) => {
 });
 
 // Cursor hover effects on links and buttons
-const interactables = document.querySelectorAll("a, .btn, .hamburger, .social-links a");
+const interactables = document.querySelectorAll("a, .btn, .hamburger");
 
 interactables.forEach(item => {
     item.addEventListener("mouseenter", () => {
@@ -80,6 +80,15 @@ const projectVideos = {
     AvisosMedicos: "videos/AvisosMedicos.mp4",
 };
 
+const projectDescriptions = {
+    edfix:
+        'EVC - <a href="https://edfix.es" target="_blank" rel="noopener noreferrer" class="project-desc-link">EDfix.es</a> es una landing one-page en React para un taller de reparación de dispositivos en Málaga, ligado al canal de YouTube EVCanal. Concentra en un solo sitio la captación de clientes (formulario de presupuesto con EmailJS), la información del negocio (servicios, precios, reseñas, galería de trabajos, ubicación y contacto) y contenido tech (vídeo del canal, noticias vía GNews y productos recomendados). Está pensada para convertir visitas en solicitudes de presupuesto.',
+    wback:
+        "Wback — Backend API para Mensajería en Tiempo Real. API REST robusta, escalable y contenerizada diseñada como el motor para aplicaciones de chat y mensajería. Desarrollada con Python (Django REST Framework), implementa autenticación JWT segura, gestión de perfiles de usuario y documentación automática bajo OpenAPI 3.0.",
+    avisosmedicos:
+        "Desarrollé una aplicación de escritorio multiusuario orientada al sector sanitario-turístico, pensada para equipos que gestionan avisos médicos en hoteles de la Costa del Sol. La herramienta centraliza todo el ciclo de un caso: desde la solicitud inicial (paciente, hotel, habitación, motivo de urgencia, seguro y touroperador) hasta el cierre con diagnóstico, traslado en ambulancia e ingreso hospitalario. Se realiza el envío de alertas a canales de Microsoft Teams mediante webhooks y tarjetas adaptativas. Los datos se persisten en PostgreSQL con respaldo en CSV, lo que permite trabajo en red entre varios puestos.",
+};
+
 function getLanguageIcon(language) {
     const langLower = (language || "").toLowerCase();
     if (langLower === "javascript") return "fa-brands fa-js";
@@ -116,7 +125,7 @@ function setupProjectVideo(video, fallback) {
     }
 }
 
-function createProjectCard({ name, description, language, repoUrl }) {
+function createProjectCard({ name, description, language, repoUrl, descriptionIsHtml = false }) {
     const iconClass = getLanguageIcon(language);
     const videoSrc = getVideoSrc(name);
     const card = document.createElement("article");
@@ -128,7 +137,7 @@ function createProjectCard({ name, description, language, repoUrl }) {
                 <i class="${iconClass}"></i>
             </div>
             <h3 class="project-title">${name}</h3>
-            <p class="project-desc">${description}</p>
+            <p class="project-desc"></p>
             <div class="project-meta">
                 <span class="project-tech">${language}</span>
                 <a href="${repoUrl}" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Ver código en GitHub"><i class="fa-brands fa-github"></i></a>
@@ -145,6 +154,13 @@ function createProjectCard({ name, description, language, repoUrl }) {
         </div>
     `;
 
+    const descEl = card.querySelector(".project-desc");
+    if (descriptionIsHtml) {
+        descEl.innerHTML = description;
+    } else {
+        descEl.textContent = description;
+    }
+
     setupProjectVideo(card.querySelector(".project-video"), card.querySelector(".project-video-fallback"));
 
     return card;
@@ -153,12 +169,22 @@ function createProjectCard({ name, description, language, repoUrl }) {
 function renderProjects(repos) {
     projectsContainer.innerHTML = "";
     repos.forEach((repo) => {
+        const repoName = repo.name;
+        const repoKey = repoName?.toLowerCase();
+        const customDescription = projectDescriptions[repoKey];
+        const description =
+            customDescription ||
+            repo.description ||
+            repo.desc ||
+            "Proyecto desarrollado por Ayoub. Visita el repositorio para más detalles.";
+
         projectsContainer.appendChild(
             createProjectCard({
-                name: repo.name,
-                description: repo.description || repo.desc || "Proyecto desarrollado por Ayoub. Visita el repositorio para más detalles.",
+                name: repoName,
+                description,
+                descriptionIsHtml: Boolean(customDescription),
                 language: repo.language || repo.lang || "Code",
-                repoUrl: repo.html_url || `https://github.com/${githubUsername}/${repo.name}`,
+                repoUrl: repo.html_url || `https://github.com/${githubUsername}/${repoName}`,
             })
         );
     });
