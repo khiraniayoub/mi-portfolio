@@ -397,12 +397,20 @@ async function fetchGitHubProjects() {
                 !excludedRepos.includes(repo.name.toLowerCase())
         );
 
+        // Forzar a que AvisosMedicos sea el primero de la lista
+        validRepos.sort((a, b) => {
+            if (a.name.toLowerCase() === "avisosmedicos") return -1;
+            if (b.name.toLowerCase() === "avisosmedicos") return 1;
+            return 0;
+        });
+
         currentRepos = validRepos;
         renderProjects(currentRepos);
     } catch (error) {
         console.error("Error fetching GitHub repos:", error);
 
         const manualRepos = [
+            { name: "AvisosMedicos", lang: "Python", desc: "Proyecto AvisosMedicos" },
             { name: "edfix", lang: "JavaScript", desc: "Proyecto EVC-EDfix Website" },
             { name: "proyecto", lang: "Java", desc: "Proyecto en Java" },
             { name: "umafactorial", lang: "Java", desc: "Proyecto Umafactorial" },
