@@ -175,7 +175,17 @@ const translations = {
         project_default_desc: "Proyecto desarrollado por Ayoub. Visita el repositorio para más detalles.",
         video_fallback_instructions: "Añade un video corto en<br><code>videos/{name}.mp4</code>",
         no_projects_found: "No se encontraron proyectos públicos.",
-        color_panel_title: "Color de Acento"
+        color_panel_title: "Color de Acento",
+        modal_title: "Enviar Mensaje",
+        form_name: "Nombre",
+        form_email: "Email",
+        form_subject: "Asunto",
+        form_message: "Mensaje",
+        form_send_btn: "Enviar Mensaje",
+        form_placeholder_name: "Tu nombre",
+        form_placeholder_email: "tu@email.com",
+        form_placeholder_subject: "Asunto del mensaje",
+        form_placeholder_message: "Escribe tu mensaje aquí..."
     },
     en: {
         nav_home: "Home",
@@ -200,7 +210,17 @@ const translations = {
         project_default_desc: "Project developed by Ayoub. Visit the repository for more details.",
         video_fallback_instructions: "Add a short video at<br><code>videos/{name}.mp4</code>",
         no_projects_found: "No public projects found.",
-        color_panel_title: "Accent Color"
+        color_panel_title: "Accent Color",
+        modal_title: "Send Message",
+        form_name: "Name",
+        form_email: "Email",
+        form_subject: "Subject",
+        form_message: "Message",
+        form_send_btn: "Send Message",
+        form_placeholder_name: "Your name",
+        form_placeholder_email: "you@email.com",
+        form_placeholder_subject: "Message subject",
+        form_placeholder_message: "Write your message here..."
     },
     fr: {
         nav_home: "Accueil",
@@ -225,7 +245,17 @@ const translations = {
         project_default_desc: "Projet développé par Ayoub. Visitez le dépôt pour plus de détails.",
         video_fallback_instructions: "Ajoutez une courte vidéo dans<br><code>videos/{name}.mp4</code>",
         no_projects_found: "Aucun projet public trouvé.",
-        color_panel_title: "Couleur d'Accent"
+        color_panel_title: "Couleur d'Accent",
+        modal_title: "Envoyer un Message",
+        form_name: "Nom",
+        form_email: "E-mail",
+        form_subject: "Sujet",
+        form_message: "Message",
+        form_send_btn: "Envoyer le Message",
+        form_placeholder_name: "Votre nom",
+        form_placeholder_email: "vous@email.com",
+        form_placeholder_subject: "Sujet du message",
+        form_placeholder_message: "Écrivez votre message ici..."
     },
     ar: {
         nav_home: "الرئيسية",
@@ -250,7 +280,17 @@ const translations = {
         project_default_desc: "مشروع من تطوير أيوب. قم بزيارة المستودع لمزيد من التفاصيل.",
         video_fallback_instructions: "أضف مقطع فيديو قصير في<br><code>videos/{name}.mp4</code>",
         no_projects_found: "لم يتم العثور على مشاريع عامة.",
-        color_panel_title: "لون المظهر"
+        color_panel_title: "لون المظهر",
+        modal_title: "إرسال رسالة",
+        form_name: "الاسم",
+        form_email: "البريد الإلكتروني",
+        form_subject: "الموضوع",
+        form_message: "الرسالة",
+        form_send_btn: "إرسال الرسالة",
+        form_placeholder_name: "اسمك",
+        form_placeholder_email: "بريدك@الإلكتروني.com",
+        form_placeholder_subject: "موضوع الرسالة",
+        form_placeholder_message: "اكتب رسالتك هنا..."
     }
 };
 
@@ -453,6 +493,15 @@ function applyLanguage(lang) {
         }
     });
 
+    // Update translation placeholders
+    const translatePlaceholders = document.querySelectorAll("[data-translate-placeholder]");
+    translatePlaceholders.forEach(el => {
+        const key = el.getAttribute("data-translate-placeholder");
+        if (translations[lang] && translations[lang][key]) {
+            el.placeholder = translations[lang][key];
+        }
+    });
+
     // Update active flag button
     const currentFlag = document.getElementById("current-lang-flag");
     if (currentFlag) {
@@ -587,4 +636,117 @@ document.addEventListener('DOMContentLoaded', () => {
     initLanguage();
     initAccentColor();
     fetchGitHubProjects();
+    setupContactModal();
 });
+
+// Contact Modal Functionality with EmailJS
+// ⚠️ CONFIGURA TUS CREDENCIALES DE EMAILJS AQUÍ:
+const EMAILJS_PUBLIC_KEY = "cYyKyrvoTjm42b1yM";    // Tu Public Key de EmailJS
+const EMAILJS_SERVICE_ID = "service_boz3dxg";    // Tu Service ID (Gmail_edfix)
+const EMAILJS_TEMPLATE_ID = "template_6tcinqb";  // Tu Template ID (ej: "template_contact")
+
+// Inicializar EmailJS
+if (typeof emailjs !== "undefined") {
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+}
+
+// Traducciones para feedback del formulario
+const formFeedback = {
+    es: { sending: "Enviando...", success: "¡Mensaje enviado! ✓", error: "Error al enviar. Inténtalo de nuevo." },
+    en: { sending: "Sending...", success: "Message sent! ✓", error: "Failed to send. Try again." },
+    fr: { sending: "Envoi en cours...", success: "Message envoyé ! ✓", error: "Échec de l'envoi. Réessayez." },
+    ar: { sending: "جارٍ الإرسال...", success: "تم إرسال الرسالة! ✓", error: "فشل الإرسال. حاول مرة أخرى." }
+};
+
+function setupContactModal() {
+    const modal = document.getElementById("contact-modal");
+    const btnTrigger = document.getElementById("contact-btn-trigger");
+    const btnClose = document.getElementById("close-modal");
+    const form = document.getElementById("contact-form");
+
+    if (!modal || !btnTrigger || !btnClose || !form) return;
+
+    // Open modal
+    btnTrigger.addEventListener("click", () => {
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden"; // Prevent scrolling
+    });
+
+    // Close modal
+    const closeModal = () => {
+        modal.classList.remove("active");
+        document.body.style.overflow = ""; // Re-enable scrolling
+    };
+
+    btnClose.addEventListener("click", closeModal);
+
+    // Close modal when clicking outside the content box
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("active")) {
+            closeModal();
+        }
+    });
+
+    // Form submission via EmailJS
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const submitBtn = form.querySelector(".submit-btn");
+        const submitText = submitBtn.querySelector("[data-translate]");
+        const activeLang = localStorage.getItem("portfolio-lang") || "es";
+        const feedback = formFeedback[activeLang] || formFeedback.es;
+
+        // Disable button and show sending state
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = "0.7";
+        if (submitText) submitText.textContent = feedback.sending;
+
+        const templateParams = {
+            from_name: document.getElementById("form-name").value,
+            from_email: document.getElementById("form-email").value,
+            subject: document.getElementById("form-subject").value,
+            message: document.getElementById("form-message").value,
+        };
+
+        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+            .then(() => {
+                // Success
+                if (submitText) submitText.textContent = feedback.success;
+                submitBtn.style.background = "linear-gradient(45deg, #22c55e, #16a34a)";
+                submitBtn.style.opacity = "1";
+                form.reset();
+
+                // Reset button and close modal after 2 seconds
+                setTimeout(() => {
+                    submitBtn.style.background = "";
+                    submitBtn.disabled = false;
+                    const sendKey = translations[activeLang]?.form_send_btn || "Enviar Mensaje";
+                    if (submitText) submitText.textContent = sendKey;
+                    closeModal();
+                }, 2000);
+            })
+            .catch((error) => {
+                // Error
+                console.error("EmailJS error:", error);
+                if (submitText) submitText.textContent = feedback.error;
+                submitBtn.style.background = "linear-gradient(45deg, #ef4444, #dc2626)";
+                submitBtn.style.opacity = "1";
+
+                // Reset button after 3 seconds
+                setTimeout(() => {
+                    submitBtn.style.background = "";
+                    submitBtn.disabled = false;
+                    const sendKey = translations[activeLang]?.form_send_btn || "Enviar Mensaje";
+                    if (submitText) submitText.textContent = sendKey;
+                }, 3000);
+            });
+    });
+}
+
