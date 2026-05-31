@@ -17,7 +17,7 @@
   <!-- Botones de Acción (se ocultan en el PDF de manera automática) -->
   <div class="action-buttons">
     <button onclick="window.print()" class="btn-print">
-      <i class="fa-solid fa-file-pdf"></i> Exportar a PDF / Imprimir
+      <i class="fa-solid fa-file-pdf"></i> <span data-translate="btn_print">Exportar a PDF / Imprimir</span>
     </button>
   </div>
 
@@ -35,7 +35,7 @@
 
       <!-- Contacto -->
       <section class="sidebar-section">
-        <h3 class="section-title"><i class="fa-solid fa-address-card"></i> Contacto</h3>
+        <h3 class="section-title"><i class="fa-solid fa-address-card"></i> <span data-translate="contact_title">Contacto</span></h3>
         <ul class="contact-list">
           <li>
             <i class="fa-solid fa-location-dot"></i>
@@ -62,10 +62,10 @@
 
       <!-- Habilidades Técnicas -->
       <section class="sidebar-section">
-        <h3 class="section-title"><i class="fa-solid fa-code"></i> Habilidades</h3>
+        <h3 class="section-title"><i class="fa-solid fa-code"></i> <span data-translate="skills_title">Habilidades</span></h3>
         
         <div class="skill-group">
-          <h4>Lenguajes</h4>
+          <h4 data-translate="skills_languages">Lenguajes</h4>
           <div class="tags">
             <span class="tag">Python</span>
             <span class="tag">JavaScript</span>
@@ -76,7 +76,7 @@
         </div>
 
         <div class="skill-group">
-          <h4>Frameworks & Libs</h4>
+          <h4 data-translate="skills_frameworks">Frameworks & Libs</h4>
           <div class="tags">
             <span class="tag">Vue.js</span>
             <span class="tag">React</span>
@@ -86,7 +86,7 @@
         </div>
 
         <div class="skill-group">
-          <h4>DevOps & Tools</h4>
+          <h4 data-translate="skills_devops">DevOps & Tools</h4>
           <div class="tags">
             <span class="tag">Git</span>
             <span class="tag">GitHub</span>
@@ -98,7 +98,7 @@
         </div>
 
         <div class="skill-group">
-          <h4>IA & Automatización</h4>
+          <h4 data-translate="skills_ai">IA & Automatización</h4>
           <div class="tags">
             <span class="tag">Agentes IA</span>
             <span class="tag">APIs OpenAI/Anthropic</span>
@@ -109,23 +109,23 @@
 
       <!-- Competencias & Idiomas -->
       <section class="sidebar-section">
-        <h3 class="section-title"><i class="fa-solid fa-language"></i> Idiomas</h3>
+        <h3 class="section-title"><i class="fa-solid fa-language"></i> <span data-translate="langs_title">Idiomas</span></h3>
         <div class="languages">
           <div class="lang-item">
-            <span class="lang-name">Árabe</span>
-            <span class="lang-level">Nativo</span>
+            <span class="lang-name" data-translate="lang_ar">Árabe</span>
+            <span class="lang-level" data-translate="level_native">Nativo</span>
           </div>
           <div class="lang-item">
-            <span class="lang-name">Francés</span>
-            <span class="lang-level">Nativo</span>
+            <span class="lang-name" data-translate="lang_fr">Francés</span>
+            <span class="lang-level" data-translate="level_native">Nativo</span>
           </div>
           <div class="lang-item">
-            <span class="lang-name">Español</span>
-            <span class="lang-level">Fluido</span>
+            <span class="lang-name" data-translate="lang_es">Español</span>
+            <span class="lang-level" data-translate="level_fluent">Fluido</span>
           </div>
           <div class="lang-item">
-            <span class="lang-name">Inglés</span>
-            <span class="lang-level">Intermedio</span>
+            <span class="lang-name" data-translate="lang_en">Inglés</span>
+            <span class="lang-level" data-translate="level_intermediate">Intermedio</span>
           </div>
         </div>
       </section>
@@ -137,91 +137,91 @@
       
       <!-- Perfil Profesional -->
       <section class="main-section">
-        <h2 class="main-section-title"><i class="fa-solid fa-briefcase"></i> Perfil Profesional</h2>
-        <p class="profile-text">
+        <h2 class="main-section-title"><i class="fa-solid fa-briefcase"></i> <span data-translate="profile_title">Perfil Profesional</span></h2>
+        <p class="profile-text" data-translate="profile_text">
           Desarrollador Full Stack con Grado Superior en Desarrollo de Aplicaciones Multiplataforma (DAM). Experiencia real en el desarrollo, optimización y contenedorización de aplicaciones web bajo entornos Agile. Con más de 8 años de trayectoria en el sector sanitario internacional, aporto una visión madura para la resolución de problemas lógicos, adaptabilidad tecnológica y una sólida comunicación multicultural.
         </p>
       </section>
 
       <!-- Experiencia Técnica -->
       <section class="main-section">
-        <h2 class="main-section-title"><i class="fa-solid fa-laptop-code"></i> Experiencia Técnica</h2>
+        <h2 class="main-section-title"><i class="fa-solid fa-laptop-code"></i> <span data-translate="tech_title">Experiencia Técnica</span></h2>
         
         <div class="timeline-item">
           <div class="timeline-header">
-            <h3>Desarrollador Full Stack (Prácticas FCT)</h3>
-            <span class="company-tag">Zexel (Málaga)</span>
-            <span class="date-tag">2026</span>
+            <h3 data-translate="job_title_fct">Desarrollador Full Stack (Prácticas FCT)</h3>
+            <span class="company-tag" data-translate="company_zexel">Zexel (Málaga)</span>
+            <span class="date-tag" data-translate="date_2026">2026</span>
           </div>
           <ul class="experience-details">
-            <li><strong>Frontend:</strong> Desarrollo y optimización de interfaces de usuario interactivas, reactivas y dinámicas con Vue.js.</li>
-            <li><strong>Backend:</strong> Implementación de lógica de negocio, APIs REST y gestión de modelos de datos utilizando Django.</li>
-            <li><strong>DevOps:</strong> Contenedorización de entornos locales y de despliegue con Docker para asegurar la paridad de entornos.</li>
-            <li><strong>Metodologías:</strong> Gestión de flujos de trabajo en equipos técnicos bajo metodologías Agile (Scrum) usando Jira y control de versiones mediante Bitbucket.</li>
+            <li data-translate="exp_zexel_1"><strong>Frontend:</strong> Desarrollo y optimización de interfaces de usuario interactivas, reactivas y dinámicas con Vue.js.</li>
+            <li data-translate="exp_zexel_2"><strong>Backend:</strong> Implementación de lógica de negocio, APIs REST y gestión de modelos de datos utilizando Django.</li>
+            <li data-translate="exp_zexel_3"><strong>DevOps:</strong> Contenedorización de entornos locales y de despliegue con Docker para asegurar la paridad de entornos.</li>
+            <li data-translate="exp_zexel_4"><strong>Metodologías:</strong> Gestión de flujos de trabajo en equipos técnicos bajo metodologías Agile (Scrum) usando Jira y control de versiones mediante Bitbucket.</li>
           </ul>
         </div>
       </section>
 
       <!-- Proyectos Destacados -->
       <section class="main-section">
-        <h2 class="main-section-title"><i class="fa-solid fa-circle-nodes"></i> Proyectos Destacados</h2>
+        <h2 class="main-section-title"><i class="fa-solid fa-circle-nodes"></i> <span data-translate="projects_title">Proyectos Destacados</span></h2>
         
         <div class="timeline-item">
           <div class="timeline-header">
             <h3>AvisosMedicos</h3>
-            <span class="company-tag">Proyecto Autónomo</span>
-            <span class="date-tag">Aplicación Escritorio</span>
+            <span class="company-tag" data-translate="project_self">Proyecto Autónomo</span>
+            <span class="date-tag" data-translate="project_desktop">Aplicación Escritorio</span>
           </div>
-          <p class="project-desc">
+          <p class="project-desc" data-translate="proj_desc_avisos">
             Solución de escritorio orientada a optimizar la gestión operativa en el sector sanitario-turístico.
           </p>
           <ul class="experience-details">
-            <li>Implementación de envío automatizado de alertas a Microsoft Teams mediante webhooks y tarjetas adaptativas.</li>
-            <li>Integración de persistencia de datos relacionales en PostgreSQL con sistemas redundantes de respaldo en archivos CSV para garantizar la operación continua en red local.</li>
+            <li data-translate="proj_details_avisos_1">Implementación de envío automatizado de alertas a Microsoft Teams mediante webhooks y tarjetas adaptativas.</li>
+            <li data-translate="proj_details_avisos_2">Integración de persistencia de datos relacionales en PostgreSQL con sistemas redundantes de respaldo en archivos CSV para garantizar la operación continua en red local.</li>
           </ul>
         </div>
       </section>
 
       <!-- Formación Académica -->
       <section class="main-section">
-        <h2 class="main-section-title"><i class="fa-solid fa-graduation-cap"></i> Formación Académica</h2>
+        <h2 class="main-section-title"><i class="fa-solid fa-graduation-cap"></i> <span data-translate="education_title">Formación Académica</span></h2>
         
         <div class="education-item">
           <div class="timeline-header">
-            <h3>FP Grado Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)</h3>
-            <span class="company-tag">ILERNA, Málaga</span>
+            <h3 data-translate="edu_dam">FP Grado Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)</h3>
+            <span class="company-tag" data-translate="edu_dam_sub">ILERNA, Málaga</span>
           </div>
         </div>
 
         <div class="education-item">
           <div class="timeline-header">
-            <h3>Ingeniería Informática (120 ECTS Completados)</h3>
-            <span class="company-tag">Universidad de Málaga (UMA)</span>
+            <h3 data-translate="edu_eng">Ingeniería Informática (120 ECTS Completados)</h3>
+            <span class="company-tag" data-translate="edu_eng_sub">Universidad de Málaga (UMA)</span>
             <span class="date-tag">2017 – 2019</span>
           </div>
         </div>
 
         <div class="education-item">
           <div class="timeline-header">
-            <h3>Curso de Montaje de Ordenadores</h3>
-            <span class="company-tag">Universidad de Málaga (UMA)</span>
+            <h3 data-translate="edu_pc">Curso de Montaje de Ordenadores</h3>
+            <span class="company-tag" data-translate="edu_pc_sub">Universidad de Málaga (UMA)</span>
           </div>
         </div>
       </section>
 
       <!-- Otra Experiencia -->
       <section class="main-section">
-        <h2 class="main-section-title"><i class="fa-solid fa-users"></i> Otra Experiencia Laboral</h2>
+        <h2 class="main-section-title"><i class="fa-solid fa-users"></i> <span data-translate="other_exp_title">Otra Experiencia Laboral</span></h2>
         
         <div class="timeline-item">
           <div class="timeline-header">
-            <h3>Traductor y Administrativo</h3>
-            <span class="company-tag">Hospital Vithas Xanit International</span>
-            <span class="date-tag">12/2016 – Actualidad</span>
+            <h3 data-translate="job_translator">Traductor y Administrativo</h3>
+            <span class="company-tag" data-translate="company_vithas">Hospital Vithas Xanit International</span>
+            <span class="date-tag" data-translate="date_translator">12/2016 – Actualidad</span>
           </div>
           <ul class="experience-details">
-            <li>Gestión de flujos organizativos y atención prioritaria a pacientes internacionales de múltiples nacionalidades.</li>
-            <li>Coordinación administrativa interna y resolución ágil de incidencias críticas bajo entornos de alta presión.</li>
+            <li data-translate="exp_translator_1">Gestión de flujos organizativos y atención prioritaria a pacientes internacionales de múltiples nacionalidades.</li>
+            <li data-translate="exp_translator_2">Coordinación administrativa interna y resolución ágil de incidencias críticas bajo entornos de alta presión.</li>
           </ul>
         </div>
       </section>
@@ -230,5 +230,223 @@
 
   </div>
 
+  <script>
+    const cvTranslations = {
+      es: {
+        btn_print: "Exportar a PDF / Imprimir",
+        contact_title: "Contacto",
+        skills_title: "Habilidades",
+        skills_languages: "Lenguajes",
+        skills_frameworks: "Frameworks & Libs",
+        skills_devops: "DevOps & Tools",
+        skills_ai: "IA & Automatización",
+        langs_title: "Idiomas",
+        lang_ar: "Árabe",
+        lang_fr: "Francés",
+        lang_es: "Español",
+        lang_en: "Inglés",
+        level_native: "Nativo",
+        level_fluent: "Fluido",
+        level_intermediate: "Intermedio",
+        profile_title: "Perfil Profesional",
+        profile_text: "Desarrollador Full Stack con Grado Superior en Desarrollo de Aplicaciones Multiplataforma (DAM). Experiencia real en el desarrollo, optimización y contenedorización de aplicaciones web bajo entornos Agile. Con más de 8 años de trayectoria en el sector sanitario internacional, aporto una visión madura para la resolución de problemas lógicos, adaptabilidad tecnológica y una sólida comunicación multicultural.",
+        tech_title: "Experiencia Técnica",
+        job_title_fct: "Desarrollador Full Stack (Prácticas FCT)",
+        company_zexel: "Zexel (Málaga)",
+        date_2026: "2026",
+        exp_zexel_1: "<strong>Frontend:</strong> Desarrollo y optimización de interfaces de usuario interactivas, reactivas y dinámicas con Vue.js.",
+        exp_zexel_2: "<strong>Backend:</strong> Implementación de lógica de negocio, APIs REST y gestión de modelos de datos utilizando Django.",
+        exp_zexel_3: "<strong>DevOps:</strong> Contenedorización de entornos locales y de despliegue con Docker para asegurar la paridad de entornos.",
+        exp_zexel_4: "<strong>Metodologías:</strong> Gestión de flujos de trabajo en equipos técnicos bajo metodologías Agile (Scrum) usando Jira y control de versiones mediante Bitbucket.",
+        projects_title: "Proyectos Destacados",
+        project_self: "Proyecto Autónomo",
+        project_desktop: "Aplicación Escritorio",
+        proj_desc_avisos: "Solución de escritorio orientada a optimizar la gestión operativa en el sector sanitario-turístico.",
+        proj_details_avisos_1: "Implementación de envío automatizado de alertas a Microsoft Teams mediante webhooks y tarjetas adaptativas.",
+        proj_details_avisos_2: "Integración de persistencia de datos relacionales en PostgreSQL con sistemas redundantes de respaldo en archivos CSV para garantizar la operación continua en red local.",
+        education_title: "Formación Académica",
+        edu_dam: "FP Grado Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)",
+        edu_dam_sub: "ILERNA, Málaga",
+        edu_eng: "Ingeniería Informática (120 ECTS Completados)",
+        edu_eng_sub: "Universidad de Málaga (UMA)",
+        edu_pc: "Curso de Montaje de Ordenadores",
+        edu_pc_sub: "Universidad de Málaga (UMA)",
+        other_exp_title: "Otra Experiencia Laboral",
+        job_translator: "Traductor y Administrativo",
+        company_vithas: "Hospital Vithas Xanit International",
+        date_translator: "12/2016 – Actualidad",
+        exp_translator_1: "Gestión de flujos organizativos y atención prioritaria a pacientes internacionales de múltiples nacionalidades.",
+        exp_translator_2: "Coordinación administrativa interna y resolución ágil de incidencias críticas bajo entornos de alta presión."
+      },
+      en: {
+        btn_print: "Export to PDF / Print",
+        contact_title: "Contact",
+        skills_title: "Skills",
+        skills_languages: "Languages",
+        skills_frameworks: "Frameworks & Libs",
+        skills_devops: "DevOps & Tools",
+        skills_ai: "AI & Automation",
+        langs_title: "Languages",
+        lang_ar: "Arabic",
+        lang_fr: "French",
+        lang_es: "Spanish",
+        lang_en: "English",
+        level_native: "Native",
+        level_fluent: "Fluent",
+        level_intermediate: "Intermediate",
+        profile_title: "Professional Profile",
+        profile_text: "Full Stack Developer with a Higher Degree in Multi-platform Applications Development (DAM). Real experience in developing, optimizing, and containerizing web applications under Agile environments. With over 8 years of experience in the international healthcare sector, I bring a mature perspective to logical problem-solving, technological adaptability, and solid multicultural communication.",
+        tech_title: "Technical Experience",
+        job_title_fct: "Full Stack Developer (Internship)",
+        company_zexel: "Zexel (Málaga)",
+        date_2026: "2026",
+        exp_zexel_1: "<strong>Frontend:</strong> Development and optimization of interactive, reactive, and dynamic user interfaces with Vue.js.",
+        exp_zexel_2: "<strong>Backend:</strong> Implementation of business logic, REST APIs, and data model management using Django.",
+        exp_zexel_3: "<strong>DevOps:</strong> Containerization of local and deployment environments with Docker to ensure environment parity.",
+        exp_zexel_4: "<strong>Methodologies:</strong> Workflow management in technical teams under Agile (Scrum) methodologies using Jira and version control with Bitbucket.",
+        projects_title: "Featured Projects",
+        project_self: "Independent Project",
+        project_desktop: "Desktop Application",
+        proj_desc_avisos: "Desktop solution aimed at optimizing operational management in the healthcare-tourism sector.",
+        proj_details_avisos_1: "Implementation of automated alert sending to Microsoft Teams using webhooks and adaptive cards.",
+        proj_details_avisos_2: "Integration of relational data persistence in PostgreSQL with redundant backup systems in CSV files to ensure continuous operation in a local network.",
+        education_title: "Education",
+        edu_dam: "Higher Vocational Training in Multi-platform Applications Development (DAM)",
+        edu_dam_sub: "ILERNA, Málaga",
+        edu_eng: "Computer Engineering (120 ECTS Credits Completed)",
+        edu_eng_sub: "University of Málaga (UMA)",
+        edu_pc: "Computer Assembly Course",
+        edu_pc_sub: "University of Málaga (UMA)",
+        other_exp_title: "Other Work Experience",
+        job_translator: "Translator and Administrative Assistant",
+        company_vithas: "Hospital Vithas Xanit International",
+        date_translator: "12/2016 – Present",
+        exp_translator_1: "Management of organizational flows and priority care for international patients of multiple nationalities.",
+        exp_translator_2: "Internal administrative coordination and agile resolution of critical incidents under high-pressure environments."
+      },
+      fr: {
+        btn_print: "Exporter en PDF / Imprimer",
+        contact_title: "Contact",
+        skills_title: "Compétences",
+        skills_languages: "Langages",
+        skills_frameworks: "Frameworks & Libs",
+        skills_devops: "DevOps & Outils",
+        skills_ai: "IA & Automatisation",
+        langs_title: "Langues",
+        lang_ar: "Arabe",
+        lang_fr: "Français",
+        lang_es: "Espagnol",
+        lang_en: "Anglais",
+        level_native: "Maternel",
+        level_fluent: "Courant",
+        level_intermediate: "Intermédiaire",
+        profile_title: "Profil Professionnel",
+        profile_text: "Développeur Full Stack diplômé d'un brevet supérieur en Développement d'Applications Multiplateformes (DAM). Expérience réelle dans le développement, l'optimisation et la conteneurisation d'applications web dans des environnements Agile. Fort de plus de 8 ans d'expérience dans le secteur de la santé internationale, j'apporte une vision mature pour la résolution de problèmes logiques, l'adaptabilité technologique et une communication multiculturelle solide.",
+        tech_title: "Expérience Technique",
+        job_title_fct: "Développeur Full Stack (Stage)",
+        company_zexel: "Zexel (Málaga)",
+        date_2026: "2026",
+        exp_zexel_1: "<strong>Frontend :</strong> Développement et optimisation d'interfaces utilisateur interactives, réactives y dynamiques avec Vue.js.",
+        exp_zexel_2: "<strong>Backend :</strong> Implémentation de la logique métier, APIs REST et gestion des modèles de données avec Django.",
+        exp_zexel_3: "<strong>DevOps :</strong> Conteneurisation des environnements locaux et de déploiement avec Docker pour assurer la parité des environnements.",
+        exp_zexel_4: "<strong>Méthodologies :</strong> Gestion des flux de travail au sein d'équipes techniques selon les méthodologies Agile (Scrum) via Jira et contrôle de version avec Bitbucket.",
+        projects_title: "Projets Sélectionnés",
+        project_self: "Projet Autonome",
+        project_desktop: "Application de Bureau",
+        proj_desc_avisos: "Solution de bureau orientée vers l'optimisation de la gestion opérationnelle dans le secteur de la santé et du tourisme.",
+        proj_details_avisos_1: "Implémentation d'envoi automatique d'alertes à Microsoft Teams via webhooks et cartes adaptatives.",
+        proj_details_avisos_2: "Intégration de la persistance de données relationnelles dans PostgreSQL avec sauvegarde redondante en fichiers CSV pour garantir le fonctionnement continu en réseau local.",
+        education_title: "Formation Académique",
+        edu_dam: "Brevet de Technicien Supérieur en Développement d'Applications Multiplateformes (DAM)",
+        edu_dam_sub: "ILERNA, Málaga",
+        edu_eng: "Ingénierie Informatique (120 ECTS Validés)",
+        edu_eng_sub: "Université de Málaga (UMA)",
+        edu_pc: "Cours d'Assemblage d'Ordinateurs",
+        edu_pc_sub: "Université de Málaga (UMA)",
+        other_exp_title: "Autre Expérience Professionnelle",
+        job_translator: "Traducteur et Administratif",
+        company_vithas: "Hospital Vithas Xanit International",
+        date_translator: "12/2016 – Présent",
+        exp_translator_1: "Gestion des flux organisationnels et prise en charge prioritaire des patients internationaux de diverses nationalités.",
+        exp_translator_2: "Coordination administrative interne et résolution rapide des incidents critiques dans des environnements sous haute pression."
+      },
+      ar: {
+        btn_print: "تصدير إلى PDF / طباعة",
+        contact_title: "الاتصال",
+        skills_title: "المهارات",
+        skills_languages: "اللغات البرمجية",
+        skills_frameworks: "أطر العمل والمكتبات",
+        skills_devops: "DevOps والأدوات",
+        skills_ai: "الذكاء الاصطناعي والأتمتة",
+        langs_title: "اللغات",
+        lang_ar: "العربية",
+        lang_fr: "الفرنسية",
+        lang_es: "الإسبانية",
+        lang_en: "الإنجليزية",
+        level_native: "اللغة الأم",
+        level_fluent: "طليق",
+        level_intermediate: "متوسط",
+        profile_title: "الملف الشخصي المهني",
+        profile_text: "مطور ويب متكامل (Full Stack) حاصل على شهادة تقني عالي في تطوير التطبيقات متعددة المنصات (DAM). خبرة عملية في تطوير وتحسين وحوسبة تطبيقات الويب في بيئات عمل مرنة (Agile). مع مسيرة مهنية تمتد لأكثر من 8 سنوات في قطاع الصحة الدولي، أقدم رؤية ناضجة لحل المشكلات المنطقية، والتكيف التكنولوجي، والتواصل القوي متعدد الثقافات.",
+        tech_title: "الخبرة التقنية",
+        job_title_fct: "مطور ويب متكامل (تدريب عملي)",
+        company_zexel: "Zexel (مالقة)",
+        date_2026: "2026",
+        exp_zexel_1: "<strong>الواجهة الأمامية:</strong> تطوير وتحسين واجهات مستخدم تفاعلية وديناميكية باستخدام Vue.js.",
+        exp_zexel_2: "<strong>الواجهة الخلفية:</strong> بناء منطق العمل، وواجهات برمجة التطبيقات (APIs REST) وإدارة نماذج البيانات باستخدام Django.",
+        exp_zexel_3: "<strong>DevOps:</strong> حاويات بيئات التطوير المحلية والإنتاجية باستخدام Docker لضمان توافق البيئات.",
+        exp_zexel_4: "<strong>منهجيات العمل:</strong> إدارة تدفق العمل في الفرق التقنية تحت منهجيات Agile (Scrum) باستخدام Jira وإدارة النسخ باستخدام Bitbucket.",
+        projects_title: "المشاريع المميزة",
+        project_self: "مشروع مستقل",
+        project_desktop: "تطبيق سطح المكتب",
+        proj_desc_avisos: "حل مكتبي يهدف إلى تحسين الإدارة التشغيلية في قطاع السياحة العلاجية.",
+        proj_details_avisos_1: "إرسال تنبيهات تلقائية إلى قنوات Microsoft Teams عبر الويب هوكس والبطاقات التكيفية.",
+        proj_details_avisos_2: "تكامل قواعد البيانات العلائقية في PostgreSQL مع نظام نسخ احتياطي متكرر في ملفات CSV لضمان استمرارية التشغيل بالشبكة المحلية.",
+        education_title: "التعليم والتدريب",
+        edu_dam: "دبلوم عالي في تطوير التطبيقات متعددة المنصات (DAM)",
+        edu_dam_sub: "ILERNA، مالقة",
+        edu_eng: "الهندسة المعلوماتية (أنجزت 120 ECTS)",
+        edu_eng_sub: "جامعة مالقة (UMA)",
+        edu_pc: "دورة تركيب الحواسيب",
+        edu_pc_sub: "جامعة مالقة (UMA)",
+        other_exp_title: "خبرات مهنية أخرى",
+        job_translator: "مترجم وإداري",
+        company_vithas: "مستشفى Vithas Xanit الدولي",
+        date_translator: "12/2016 – الآن",
+        exp_translator_1: "إدارة التدفقات التنظيمية والرعاية ذات الأولوية للمرضى الدوليين من جنسيات متعددة.",
+        exp_translator_2: "التنسيق الإداري الداخلي والحل السريع للمشاكل الطارئة في بيئات العمل عالية الضغط."
+      }
+    };
+
+    function applyCVLanguage() {
+      const activeLang = localStorage.getItem("portfolio-lang") || "es";
+      document.documentElement.setAttribute("lang", activeLang);
+      
+      if (activeLang === "ar") {
+        document.documentElement.setAttribute("dir", "rtl");
+      } else {
+        document.documentElement.setAttribute("dir", "ltr");
+      }
+
+      const translateElements = document.querySelectorAll("[data-translate]");
+      translateElements.forEach(el => {
+        const key = el.getAttribute("data-translate");
+        if (cvTranslations[activeLang] && cvTranslations[activeLang][key]) {
+          el.innerHTML = cvTranslations[activeLang][key];
+        }
+      });
+    }
+
+    // Escuchar si cambia en localStorage en tiempo real (por si se cambia de idioma en la pestaña del portfolio)
+    window.addEventListener("storage", (e) => {
+      if (e.key === "portfolio-lang") {
+        applyCVLanguage();
+      }
+    });
+
+    // Aplicar al cargar
+    document.addEventListener("DOMContentLoaded", applyCVLanguage);
+  </script>
 </body>
 </html>
+
