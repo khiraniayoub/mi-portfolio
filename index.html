@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ayoub Khirani | Portfolio</title>
-    <meta name="description" content="Portfolio profesional de Ayoub Khirani, Desarrollador Junior.">
+    <meta name="description" content="Portfolio profesional de Ayoub Khirani, Desarrollador Full Stack.">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -82,7 +82,7 @@
             <h2 class="section-title" data-translate="about_title">Sobre Mí</h2>
             <div class="about-container">
                 <div class="about-text">
-                    <p data-translate="about_p1">Soy un <strong>Desarrollador Junior</strong> con una base sólida en programación y un interés
+                    <p data-translate="about_p1">Soy un <strong>Desarrollador Full Stack</strong> con una base sólida en programación y un interés
                         enorme en crear herramientas digitales. Me considero una persona curiosa, proactiva y que
                         disfruta trabajando en equipo para resolver problemas complejos.</p>
                     <p data-translate="about_p2">Actualmente me enfoco en desarrollar aplicaciones usando tecnologías como <strong>JavaScript,
@@ -96,6 +96,9 @@
                     <div class="skill-item"><i class="fa-brands fa-html5"></i> HTML5</div>
                     <div class="skill-item"><i class="fa-brands fa-css3-alt"></i> CSS3</div>
                     <div class="skill-item"><i class="fa-brands fa-git-alt"></i> Git</div>
+                    <div class="skill-item"><i class="fa-brands fa-github"></i> GitHub</div>
+                    <div class="skill-item"><i class="fa-solid fa-cubes"></i> Django</div>
+                    <div class="skill-item"><i class="fa-solid fa-database"></i> PostgreSQL</div>
                 </div>
             </div>
         </section>
@@ -120,8 +123,8 @@
                             class="btn primary-btn contact-action-btn">
                             <i class="fa-brands fa-github"></i> GitHub
                         </a>
-                        <a href="cv.pdf" download="CV-Ayoub-Khirani.pdf" class="btn primary-btn contact-action-btn">
-                            <i class="fa-solid fa-file-pdf"></i> <span data-translate="download_cv">Descargar CV</span>
+                        <a href="cv/index.html" target="_blank" class="btn primary-btn contact-action-btn">
+                            <i class="fa-solid fa-file-lines"></i> <span data-translate="download_cv">Ver CV</span>
                         </a>
                     </div>
                 </div>
@@ -132,6 +135,23 @@
     <footer>
         <p data-translate="footer_text">&copy; 2026 Ayoub Khirani. Todos los derechos reservados.</p>
     </footer>
+
+    <!-- Color Switcher Panel -->
+    <div class="color-switcher-container" id="color-switcher-container">
+        <button class="color-toggle-btn" id="color-toggle-btn" aria-label="Cambiar tema de color" title="Personalizar color">
+            <i class="fa-solid fa-palette"></i>
+        </button>
+        <div class="color-panel" id="color-panel">
+            <h4 data-translate="color_panel_title">Color de Acento</h4>
+            <div class="color-options">
+                <button class="color-btn active" data-color="cyan" style="background-color: #38bdf8;" aria-label="Cian" title="Cian"></button>
+                <button class="color-btn" data-color="purple" style="background-color: #a78bfa;" aria-label="Morado" title="Morado"></button>
+                <button class="color-btn" data-color="emerald" style="background-color: #2dd4bf;" aria-label="Verde Esmeralda" title="Verde Esmeralda"></button>
+                <button class="color-btn" data-color="orange" style="background-color: #fb923c;" aria-label="Naranja" title="Naranja"></button>
+                <button class="color-btn" data-color="rose" style="background-color: #fb7185;" aria-label="Rosa Rubí" title="Rosa Rubí"></button>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

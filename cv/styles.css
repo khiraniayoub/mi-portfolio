@@ -1,0 +1,437 @@
+/* ==========================================
+   SISTEMA DE DISEÑO & ESTILOS GLOBALES
+========================================== */
+:root {
+  --primary-color: #0f172a;    /* Slate 900 - Fondo oscuro principal */
+  --secondary-color: #1e293b;  /* Slate 800 - Fondo tarjetas/sidebar */
+  --accent-color: #10b981;     /* Emerald 500 - Detalles y acentos */
+  --accent-light: #d1fae5;     /* Emerald 100 - Tags y badges */
+  --text-primary: #1e293b;     /* Slate 800 - Texto principal cuerpo */
+  --text-secondary: #475569;   /* Slate 600 - Descripciones */
+  --text-light: #f8fafc;        /* Slate 50 - Texto en fondos oscuros */
+  --text-muted: #94a3b8;       /* Slate 400 - Detalles en fondos oscuros */
+  --border-color: #e2e8f0;     /* Slate 200 - Bordes claros */
+  --sidebar-width: 320px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: var(--text-primary);
+  background-color: #f1f5f9;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  padding: 40px 20px;
+}
+
+/* Botón flotante para impresión */
+.action-buttons {
+  max-width: 1000px;
+  margin: 0 auto 20px auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-print {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2), 0 2px 4px -2px rgba(16, 185, 129, 0.1);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-print:hover {
+  transform: translateY(-2px);
+  background-color: #059669;
+  box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3);
+}
+
+/* Contenedor Principal (Hoja A4 / Layout Flex) */
+.cv-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  overflow: hidden;
+  min-height: 297mm; /* Proporción A4 */
+}
+
+/* ==========================================
+   COLUMNA IZQUIERDA: SIDEBAR (Oscuro)
+========================================== */
+.cv-sidebar {
+  width: var(--sidebar-width);
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  flex-shrink: 0;
+}
+
+.profile-header {
+  text-align: center;
+}
+
+.profile-avatar {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--secondary-color);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.profile-img:hover {
+  transform: scale(1.05);
+  border-color: var(--accent-color);
+}
+
+.profile-header h1 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  margin-bottom: 5px;
+  color: white;
+}
+
+.profile-header .subtitle {
+  font-size: 1rem;
+  color: var(--accent-color);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sidebar-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid var(--secondary-color);
+  padding-bottom: 8px;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-title i {
+  color: var(--accent-color);
+}
+
+/* Lista de Contacto */
+.contact-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.contact-list li i {
+  color: var(--accent-color);
+  width: 16px;
+  margin-top: 4px;
+  text-align: center;
+}
+
+.contact-list a {
+  color: var(--text-light);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contact-list a:hover {
+  color: var(--accent-color);
+}
+
+/* Skills Tags */
+.skill-group {
+  margin-bottom: 12px;
+}
+
+.skill-group h4 {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  background-color: var(--secondary-color);
+  color: var(--text-light);
+  font-size: 0.78rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.2s ease;
+}
+
+.tag:hover {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Idiomas */
+.languages {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lang-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.88rem;
+}
+
+.lang-name {
+  font-weight: 500;
+  color: var(--text-light);
+}
+
+.lang-level {
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+/* ==========================================
+   COLUMNA DERECHA: MAIN CONTENT (Claro)
+========================================== */
+.cv-main {
+  flex-grow: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  background-color: white;
+}
+
+.main-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.main-section-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.main-section-title i {
+  color: var(--accent-color);
+}
+
+.profile-text {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  text-align: justify;
+}
+
+/* Timeline e ítems de experiencia */
+.timeline-item, .education-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  padding-left: 20px;
+  border-left: 2px solid var(--border-color);
+  margin-bottom: 10px;
+}
+
+.timeline-item::before, .education-item::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  border: 2px solid white;
+  transition: transform 0.2s ease;
+}
+
+.timeline-item:hover::before, .education-item:hover::before {
+  transform: scale(1.3);
+}
+
+.timeline-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.timeline-header h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin: 0;
+}
+
+.company-tag {
+  background-color: #f1f5f9;
+  color: var(--text-secondary);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.date-tag {
+  margin-left: auto;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-color);
+}
+
+.experience-details {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.experience-details li {
+  position: relative;
+  padding-left: 15px;
+}
+
+.experience-details li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+.project-desc {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* ==========================================
+   ESTILOS DE IMPRESIÓN (EXPORTAR A PDF)
+========================================== */
+@media print {
+  body {
+    background-color: white;
+    padding: 0;
+  }
+
+  .action-buttons {
+    display: none; /* Esconde los botones interactivos */
+  }
+
+  .cv-container {
+    box-shadow: none;
+    border-radius: 0;
+    max-width: 100%;
+    width: 100%;
+    min-height: auto;
+  }
+
+  /* Ajustes cromáticos optimizados para impresoras */
+  :root {
+    --primary-color: #0f172a;   /* Mantiene el tono elegante oscuro */
+    --secondary-color: #1e293b;
+    --accent-color: #059669;    /* Tono verde más sólido para tinta */
+    --text-primary: #000000;    /* Negro puro para legibilidad en papel */
+    --text-secondary: #1e293b;  /* Gris muy oscuro */
+  }
+
+  /* Evitar saltos de página inadecuados en medio de secciones */
+  .main-section {
+    page-break-inside: avoid;
+  }
+
+  .timeline-item, .education-item {
+    page-break-inside: avoid;
+  }
+
+  /* Forzar la impresión de colores de fondo en navegadores */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
+/* ==========================================
+   DISEÑO RESPONSIVO (PANTALLAS MÓVILES)
+========================================== */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+  
+  .cv-container {
+    flex-direction: column;
+  }
+
+  .cv-sidebar {
+    width: 100%;
+  }
+
+  .date-tag {
+    margin-left: 0;
+    width: 100%;
+    margin-top: 2px;
+  }
+}

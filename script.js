@@ -2,39 +2,75 @@
 const cursor = document.getElementById("cursor");
 const cursorBlur = document.getElementById("cursor-blur");
 
+let mouseX = 0, mouseY = 0;
+let blurX = 0, blurY = 0;
+let initialized = false;
+
+// Only apply custom cursor on non-touch devices
+if (window.innerWidth > 768) {
+    document.body.classList.add("custom-cursor-active");
+}
+
 document.addEventListener("mousemove", (e) => {
-    // Only apply custom cursor on non-touch devices
-    if (window.innerWidth > 768) {
-        cursor.style.left = e.clientX + "px";
-        cursor.style.top = e.clientY + "px";
-        
-        // Add a slight delay to the blur effect for a trailing animation
-        setTimeout(() => {
-            cursorBlur.style.left = e.clientX + "px";
-            cursorBlur.style.top = e.clientY + "px";
-        }, 50);
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    
+    if (!initialized && window.innerWidth > 768) {
+        blurX = mouseX;
+        blurY = mouseY;
+        initialized = true;
     }
 });
 
-// Cursor hover effects on links and buttons
-const interactables = document.querySelectorAll("a, .btn, .hamburger, .lang-btn, .lang-option");
+// Smooth trailing animation for the cursor blur using requestAnimationFrame
+function animateCursor() {
+    if (window.innerWidth > 768 && document.body.classList.contains("custom-cursor-active")) {
+        // Linear interpolation (lerp) for smooth lag effect
+        const lerpFactorBlur = 0.08;
+        blurX += (mouseX - blurX) * lerpFactorBlur;
+        blurY += (mouseY - blurY) * lerpFactorBlur;
+        
+        cursorBlur.style.left = blurX + "px";
+        cursorBlur.style.top = blurY + "px";
 
-interactables.forEach(item => {
-    item.addEventListener("mouseenter", () => {
-        if (window.innerWidth > 768) {
-            cursor.style.transform = "translate(-50%, -50%) scale(2)";
+        // Sync main cursor immediately
+        cursor.style.left = mouseX + "px";
+        cursor.style.top = mouseY + "px";
+    }
+    requestAnimationFrame(animateCursor);
+}
+requestAnimationFrame(animateCursor);
+
+// Hide/Show custom cursor when mouse leaves/enters the viewport
+document.addEventListener("mouseleave", () => {
+    document.body.classList.add("cursor-hidden");
+});
+
+document.addEventListener("mouseenter", () => {
+    document.body.classList.remove("cursor-hidden");
+});
+
+// Cursor hover effects on links and buttons (Using Event Delegation)
+document.addEventListener("mouseover", (e) => {
+    if (window.innerWidth > 768 && document.body.classList.contains("custom-cursor-active")) {
+        const target = e.target.closest("a, .btn, .hamburger, .lang-btn, .lang-option, .color-btn, .color-toggle-btn");
+        if (target) {
+            cursor.style.transform = "translate(-50%, -50%) scale(1.8)";
             cursor.style.backgroundColor = "transparent";
-            cursor.style.border = "1px solid var(--primary)";
+            cursor.style.border = "2px solid var(--primary)";
         }
-    });
+    }
+});
 
-    item.addEventListener("mouseleave", () => {
-        if (window.innerWidth > 768) {
+document.addEventListener("mouseout", (e) => {
+    if (window.innerWidth > 768 && document.body.classList.contains("custom-cursor-active")) {
+        const target = e.target.closest("a, .btn, .hamburger, .lang-btn, .lang-option, .color-btn, .color-toggle-btn");
+        if (target && (!e.relatedTarget || !target.contains(e.relatedTarget))) {
             cursor.style.transform = "translate(-50%, -50%) scale(1)";
             cursor.style.backgroundColor = "var(--primary)";
             cursor.style.border = "none";
         }
-    });
+    }
 });
 
 // Mobile Menu Toggle
@@ -60,10 +96,10 @@ const navbar = document.getElementById("navbar");
 
 window.addEventListener("scroll", () => {
     if (window.scrollY > 50) {
-        navbar.style.background = "rgba(15, 23, 42, 0.95)";
+        navbar.style.background = "rgba(7, 10, 19, 0.95)";
         navbar.style.boxShadow = "0 5px 20px rgba(0, 0, 0, 0.2)";
     } else {
-        navbar.style.background = "rgba(15, 23, 42, 0.8)";
+        navbar.style.background = "rgba(7, 10, 19, 0.8)";
         navbar.style.boxShadow = "none";
     }
 });
@@ -83,6 +119,13 @@ const projectVideos = {
 // Ruta de la imagen por proyecto (opcional).
 const projectImages = {
     wback: "wback.png",
+};
+
+// Tecnologías detalladas por proyecto (para mostrar múltiples etiquetas en la tarjeta)
+const projectTechTags = {
+    wback: ["Python", "Django REST Framework", "Swagger"],
+    edfix: ["React", "JavaScript", "HTML5", "CSS3"],
+    avisosmedicos: ["Python", "PyQt", "PostgreSQL", "MS Teams API"]
 };
 
 const projectDescriptions = {
@@ -120,17 +163,18 @@ const translations = {
         hero_desc: "Apasionado por la tecnología, construyendo soluciones web funcionales y elegantes. Especializado en Python, Django y React. Siempre aprendiendo y mejorando mis habilidades en el desarrollo de software.",
         btn_projects: "Ver Proyectos",
         about_title: "Sobre Mí",
-        about_p1: "Soy un <strong>Desarrollador Junior</strong> con una base sólida en programación y un interés enorme en crear herramientas digitales. Me considero una persona curiosa, proactiva y que disfruta trabajando en equipo para resolver problemas complejos.",
+        about_p1: "Soy un <strong>Desarrollador Full Stack</strong> con una base sólida en programación y un interés enorme en crear herramientas digitales. Me considero una persona curiosa, proactiva y que disfruta trabajando en equipo para resolver problemas complejos.",
         about_p2: "Actualmente me enfoco en desarrollar aplicaciones usando tecnologías como <strong>JavaScript, Python y Java</strong>. ¡Estoy buscando mi próxima oportunidad para crecer profesionalmente y aportar valor en un entorno real!",
         projects_title: "Mis Proyectos",
         contact_title: "¿Trabajamos juntos?",
         contact_desc: "Estoy disponible para nuevas oportunidades y proyectos. Si tienes alguna pregunta o simplemente quieres saludar, ¡no dudes en escribirme!",
         contact_btn: "Contactar Ahora",
-        download_cv: "Descargar CV",
+        download_cv: "Ver CV",
         footer_text: "&copy; 2026 Ayoub Khirani. Todos los derechos reservados.",
         project_default_desc: "Proyecto desarrollado por Ayoub. Visita el repositorio para más detalles.",
         video_fallback_instructions: "Añade un video corto en<br><code>videos/{name}.mp4</code>",
-        no_projects_found: "No se encontraron proyectos públicos."
+        no_projects_found: "No se encontraron proyectos públicos.",
+        color_panel_title: "Color de Acento"
     },
     en: {
         nav_home: "Home",
@@ -143,17 +187,18 @@ const translations = {
         hero_desc: "Passionate about technology, building functional and elegant web solutions. Specialized in Python, Django, and React. Always learning and improving my software development skills.",
         btn_projects: "View Projects",
         about_title: "About Me",
-        about_p1: "I am a <strong>Junior Developer</strong> with a solid foundation in programming and a huge interest in creating digital tools. I consider myself a curious, proactive person who enjoys working in a team to solve complex problems.",
+        about_p1: "I am a <strong>Full Stack Developer</strong> with a solid foundation in programming and a huge interest in creating digital tools. I consider myself a curious, proactive person who enjoys working in a team to solve complex problems.",
         about_p2: "Currently, I focus on developing applications using technologies like <strong>JavaScript, Python, and Java</strong>. I am looking for my next opportunity to grow professionally and add value in a real-world environment!",
         projects_title: "My Projects",
         contact_title: "Let's work together!",
         contact_desc: "I am available for new opportunities and projects. If you have any questions or just want to say hello, don't hesitate to write to me!",
         contact_btn: "Contact Now",
-        download_cv: "Download CV",
+        download_cv: "View CV",
         footer_text: "&copy; 2026 Ayoub Khirani. All rights reserved.",
         project_default_desc: "Project developed by Ayoub. Visit the repository for more details.",
         video_fallback_instructions: "Add a short video at<br><code>videos/{name}.mp4</code>",
-        no_projects_found: "No public projects found."
+        no_projects_found: "No public projects found.",
+        color_panel_title: "Accent Color"
     },
     fr: {
         nav_home: "Accueil",
@@ -166,17 +211,18 @@ const translations = {
         hero_desc: "Passionné par la technologie, je construis des solutions web fonctionnelles et élégantes. Spécialisé en Python, Django et React. Toujours en train d'apprendre et d'améliorer mes compétences en développement logiciel.",
         btn_projects: "Voir les Projets",
         about_title: "À Propos de Moi",
-        about_p1: "Je suis un <strong>Développeur Junior</strong> avec des bases solides en programmation et un grand intérêt pour la création d'outils numériques. Je me considère comme curieux, proactif et j'aime travailler en équipe pour résoudre des problèmes complexes.",
+        about_p1: "Je suis un <strong>Développeur Full Stack</strong> avec des bases solides en programmation et un grand intérêt pour la création d'outils numériques. Je me considère comme curieux, proactif et j'aime travailler en équipe pour résoudre des problèmes complexes.",
         about_p2: "Actuellement, je me concentre sur le développement d'applications utilisant des technologies comme <strong>JavaScript, Python et Java</strong>. Je recherche ma prochaine opportunité pour grandir professionnellement et apporter de la valeur dans un environnement réel !",
         projects_title: "Mes Projets",
         contact_title: "Travaillons ensemble !",
         contact_desc: "Je suis disponible pour de nouvelles opportunités et de nouveaux projets. Si vous avez des questions ou si vous voulez simplement dire bonjour, n'hésitez pas à m'écrire !",
         contact_btn: "Contacter Maintenant",
-        download_cv: "Télécharger le CV",
+        download_cv: "Voir le CV",
         footer_text: "&copy; 2026 Ayoub Khirani. Tous droits réservés.",
         project_default_desc: "Projet développé par Ayoub. Visitez le dépôt pour plus de détails.",
         video_fallback_instructions: "Ajoutez une courte vidéo dans<br><code>videos/{name}.mp4</code>",
-        no_projects_found: "Aucun projet public trouvé."
+        no_projects_found: "Aucun projet public trouvé.",
+        color_panel_title: "Couleur d'Accent"
     },
     ar: {
         nav_home: "الرئيسية",
@@ -189,17 +235,18 @@ const translations = {
         hero_desc: "شغوف بالتكنولوجيا، أقوم ببناء حلول ويب عملية وأنيقة. متخصص في بايثون، ديجانغو، ورياكت. دائم التعلم وتحسين مهاراتي في تطوير البرمجيات.",
         btn_projects: "عرض المشاريع",
         about_title: "من أنا",
-        about_p1: "أنا <strong>مطور جونيور</strong> لدي أساس قوي في البرمجة واهتمام كبير بإنشاء الأدوات الرقمية. أعتبر نفسي شخصاً فضولياً، مبادراً، وأستمتع بالعمل الجماعي لحل المشكلات المعقدة.",
+        about_p1: "أنا <strong>مطور ويب متكامل</strong> لدي أساس قوي في البرمجة واهتمام كبير بإنشاء الأدوات الرقمية. أعتبر نفسي شخصاً فضولياً، مبادراً، وأستمتع بالعمل الجماعي لحل المشكلات المعقدة.",
         about_p2: "أركز حالياً على تطوير التطبيقات باستخدام تقنيات مثل <strong>جافا سكريبت، بايثون، وجافا</strong>. أبحث عن فرصتي القادمة للنمو مهنياً وتقديم الإضافة في بيئة عمل حقيقية!",
         projects_title: "مشاريعي",
         contact_title: "هل نعمل معاً؟",
         contact_desc: "أنا متاح للفرص والمشاريع الجديدة. إذا كان لديك أي أسئلة أو تريد فقط إلقاء التحية، فلا تتردد في مراسلتي!",
         contact_btn: "اتصل الآن",
-        download_cv: "تحميل السيرة الذاتية",
+        download_cv: "عرض السيرة الذاتية",
         footer_text: "&copy; 2026 أيوب خيراني. جميع الحقوق محفوظة.",
         project_default_desc: "مشروع من تطوير أيوب. قم بزيارة المستودع لمزيد من التفاصيل.",
         video_fallback_instructions: "أضف مقطع فيديو قصير في<br><code>videos/{name}.mp4</code>",
-        no_projects_found: "لم يتم العثور على مشاريع عامة."
+        no_projects_found: "لم يتم العثور على مشاريع عامة.",
+        color_panel_title: "لون المظهر"
     }
 };
 
@@ -223,6 +270,7 @@ function setupProjectVideo(video, fallback) {
     const showVideo = () => {
         video.classList.remove("is-hidden");
         fallback.classList.remove("is-visible");
+        video.play().catch(err => console.log("Autoplay prevented:", err));
     };
 
     const showFallback = () => {
@@ -242,7 +290,8 @@ function setupProjectVideo(video, fallback) {
 }
 
 function createProjectCard({ name, description, language, repoUrl, descriptionIsHtml = false, videoInstruction }) {
-    const iconClass = getLanguageIcon(language);
+    const primaryLang = Array.isArray(language) ? language[0] : language;
+    const iconClass = getLanguageIcon(primaryLang);
     const videoSrc = getVideoSrc(name);
     const imageSrc = projectImages[name.toLowerCase()];
     const hasImage = Boolean(imageSrc);
@@ -253,7 +302,7 @@ function createProjectCard({ name, description, language, repoUrl, descriptionIs
     const mediaHTML = hasImage
         ? `<img class="project-image" src="${imageSrc}" alt="Captura de ${name}">`
         : `
-            <video class="project-video" controls playsinline preload="metadata" aria-label="Demo de ${name}">
+            <video class="project-video" autoplay loop muted playsinline preload="auto" aria-label="Demo de ${name}">
                 <source src="${videoSrc}" type="video/mp4">
             </video>
             <div class="project-video-fallback">
@@ -261,6 +310,9 @@ function createProjectCard({ name, description, language, repoUrl, descriptionIs
                 <p>${videoInstruction}</p>
             </div>
         `;
+
+    const tagsArray = Array.isArray(language) ? language : [language];
+    const techHTML = tagsArray.map(tech => `<span class="project-tech">${tech}</span>`).join(" ");
 
     card.innerHTML = `
         <div class="project-body">
@@ -270,7 +322,9 @@ function createProjectCard({ name, description, language, repoUrl, descriptionIs
             <h3 class="project-title">${name}</h3>
             <p class="project-desc"></p>
             <div class="project-meta">
-                <span class="project-tech">${language}</span>
+                <div class="project-tech-group">
+                    ${techHTML}
+                </div>
                 <a href="${repoUrl}" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Ver código en GitHub"><i class="fa-brands fa-github"></i></a>
             </div>
         </div>
@@ -313,12 +367,15 @@ function renderProjects(repos) {
         const instrTemplate = translations[activeLang]?.video_fallback_instructions || "Añade un video corto en<br><code>videos/{name}.mp4</code>";
         const videoInstruction = instrTemplate.replace("{name}", repoName);
 
+        const customTags = projectTechTags[repoKey];
+        const tags = customTags || (repo.language ? [repo.language] : (repo.lang ? [repo.lang] : ["Code"]));
+
         projectsContainer.appendChild(
             createProjectCard({
                 name: repoName,
                 description,
                 descriptionIsHtml: Boolean(customDescription),
-                language: repo.language || repo.lang || "Code",
+                language: tags,
                 repoUrl: repo.html_url || `https://github.com/${githubUsername}/${repoName}`,
                 videoInstruction,
             })
@@ -431,8 +488,91 @@ function setupLanguageSelector() {
     });
 }
 
+// Color Switcher Logic
+const colorThemes = {
+    cyan: {
+        primary: "#38bdf8",
+        primaryHover: "#0ea5e9",
+        primaryGlow: "rgba(56, 189, 248, 0.35)"
+    },
+    purple: {
+        primary: "#a78bfa",
+        primaryHover: "#8b5cf6",
+        primaryGlow: "rgba(167, 139, 250, 0.35)"
+    },
+    emerald: {
+        primary: "#2dd4bf",
+        primaryHover: "#14b8a6",
+        primaryGlow: "rgba(45, 212, 191, 0.35)"
+    },
+    orange: {
+        primary: "#fb923c",
+        primaryHover: "#f97316",
+        primaryGlow: "rgba(251, 146, 60, 0.35)"
+    },
+    rose: {
+        primary: "#fb7185",
+        primaryHover: "#f43f5e",
+        primaryGlow: "rgba(251, 113, 133, 0.35)"
+    }
+};
+
+function applyAccentColor(colorName) {
+    const theme = colorThemes[colorName] || colorThemes.cyan;
+    document.documentElement.style.setProperty("--primary", theme.primary);
+    document.documentElement.style.setProperty("--primary-hover", theme.primaryHover);
+    document.documentElement.style.setProperty("--primary-glow", theme.primaryGlow);
+    localStorage.setItem("portfolio-accent", colorName);
+    
+    // Update active class on color selector buttons
+    const colorBtns = document.querySelectorAll(".color-btn");
+    colorBtns.forEach(btn => {
+        if (btn.getAttribute("data-color") === colorName) {
+            btn.classList.add("active");
+        } else {
+            btn.classList.remove("active");
+        }
+    });
+}
+
+function initAccentColor() {
+    const savedAccent = localStorage.getItem("portfolio-accent") || "cyan";
+    applyAccentColor(savedAccent);
+    setupColorSwitcher();
+}
+
+function setupColorSwitcher() {
+    const container = document.getElementById("color-switcher-container");
+    const toggleBtn = document.getElementById("color-toggle-btn");
+    const colorBtns = document.querySelectorAll(".color-btn");
+
+    if (!container || !toggleBtn) return;
+
+    // Toggle switcher panel
+    toggleBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        container.classList.toggle("active");
+    });
+
+    // Handle color option clicks
+    colorBtns.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const colorName = btn.getAttribute("data-color");
+            applyAccentColor(colorName);
+            container.classList.remove("active");
+        });
+    });
+
+    // Close switcher panel when clicking outside
+    document.addEventListener("click", () => {
+        container.classList.remove("active");
+    });
+}
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     initLanguage();
+    initAccentColor();
     fetchGitHubProjects();
 });
