@@ -372,8 +372,8 @@ body {
 ========================================== */
 @media print {
   @page {
-    size: A4;
-    margin: 0;
+    size: A4 portrait;
+    margin: 0mm;
   }
 
   body {
@@ -386,16 +386,6 @@ body {
     display: none; /* Esconde los botones interactivos */
   }
 
-  .cv-container {
-    box-shadow: none;
-    border-radius: 0;
-    max-width: 100%;
-    width: 100%;
-    min-height: 297mm;
-    margin: 0;
-    padding: 0;
-  }
-
   /* Ajustes cromáticos optimizados para impresoras */
   :root {
     --primary-color: #0f172a;   /* Mantiene el tono elegante oscuro */
@@ -405,12 +395,41 @@ body {
     --text-secondary: #1e293b;  /* Gris muy oscuro */
   }
 
-  /* Evitar saltos de página inadecuados en medio de secciones */
-  .main-section {
-    page-break-inside: avoid;
+  /* Layout robusto para impresión multipágina */
+  .cv-container {
+    display: block !important; /* Desactivar flex para evitar bugs en PDF */
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    /* Fondo continuo para todas las páginas simulando 2 columnas */
+    background: linear-gradient(to right, var(--primary-color) 0%, var(--primary-color) 260px, white 260px, white 100%) !important;
   }
 
-  .timeline-item, .education-item {
+  .cv-container::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .cv-sidebar {
+    float: left !important;
+    width: 260px !important;
+    background-color: transparent !important;
+    padding: 30px 20px !important;
+    height: auto !important;
+  }
+
+  .cv-main {
+    margin-left: 260px !important;
+    padding: 30px 40px !important;
+    display: block !important;
+    background-color: transparent !important;
+  }
+
+  /* Evitar saltos de página inadecuados en medio de secciones */
+  .main-section, .timeline-item, .education-item, .sidebar-section {
     page-break-inside: avoid;
   }
 
@@ -424,7 +443,7 @@ body {
 /* ==========================================
    DISEÑO RESPONSIVO (PANTALLAS MÓVILES)
 ========================================== */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   body {
     padding: 10px;
   }
