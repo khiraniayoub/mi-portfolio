@@ -3,12 +3,12 @@
     --bg-color: #070a13;
     --text-main: #f8fafc;
     --text-muted: #94a3b8;
-    --primary: #38bdf8;
-    --primary-hover: #0ea5e9;
+    --primary: #f97316;
+    --primary-hover: #ea580c;
     --secondary: #0f172a;
     --accent: #c084fc;
     --accent-glow: rgba(192, 132, 252, 0.35);
-    --primary-glow: rgba(56, 189, 248, 0.35);
+    --primary-glow: rgba(249, 115, 22, 0.35);
 
     --card-bg: rgba(15, 23, 42, 0.65);
     --card-border: rgba(255, 255, 255, 0.06);
@@ -372,9 +372,6 @@ section {
     object-fit: cover;
     object-position: center 25%;
     mix-blend-mode: normal;
-    filter: brightness(1.1) contrast(1.05);
-    -webkit-mask-image: radial-gradient(circle at center, black 45%, transparent 85%);
-    mask-image: radial-gradient(circle at center, black 45%, transparent 85%);
     z-index: 2;
     transform: scale(1);
 }
