@@ -121,33 +121,49 @@ const projectImages = {
     wback: "wback.png",
 };
 
+// Enlaces a proyectos desplegados en vivo (Vercel, etc.)
+const projectLiveUrls = {
+    "interdoc-web": "https://visita-domicilio.vercel.app/",
+    "medical-tourisme": "https://medical-tourism-one.vercel.app/"
+};
+
 // Tecnologías detalladas por proyecto (para mostrar múltiples etiquetas en la tarjeta)
 const projectTechTags = {
     wback: ["Python", "Django REST Framework", "Swagger"],
     edfix: ["React", "JavaScript", "HTML5", "CSS3"],
-    avisosmedicos: ["Python", "PyQt", "PostgreSQL", "MS Teams API"]
+    avisosmedicos: ["Python", "PyQt", "PostgreSQL", "MS Teams API"],
+    "interdoc-web": ["TypeScript", "Next.js", "React"],
+    "medical-tourisme": ["TypeScript", "React"]
 };
 
 const projectDescriptions = {
     es: {
         edfix: 'EVC - <a href="https://edfix.es" target="_blank" rel="noopener noreferrer" class="project-desc-link">EDfix.es</a> es una landing one-page en React para un taller de reparación de dispositivos en Málaga, ligado al canal de YouTube EVCanal. Concentra en un solo sitio la captación de clientes (formulario de presupuesto con EmailJS), la información del negocio (servicios, precios, reseñas, galería de trabajos, ubicación y contacto) y contenido tech (vídeo del canal, noticias vía GNews y productos recomendados). Está pensada para convertir visitas en solicitudes de presupuesto.',
         wback: 'Wback — Backend API para Mensajería en Tiempo Real. API REST robusta, escalable y contenerizada diseñada como el motor para aplicaciones de chat y mensajería. Desarrollada con Python (Django REST Framework), implementa autenticación JWT segura, gestión de perfiles de usuario y documentación automática bajo OpenAPI 3.0.',
-        avisosmedicos: 'Desarrollé una aplicación de escritorio multiusuario orientada al sector sanitario-turístico, pensada para equipos que gestionan avisos médicos en hoteles de la Costa del Sol. La herramienta centraliza todo el ciclo de un caso: desde la solicitud inicial (paciente, hotel, habitación, motivo de urgencia, seguro y touroperador) hasta el cierre con diagnóstico, traslado en ambulancia e ingreso hospitalario. Se realiza el envío de alertas a canales de Microsoft Teams mediante webhooks y tarjetas adaptativas. Los datos se persisten en PostgreSQL con respaldo en CSV, lo que permite trabajo en red entre varios puestos.'
+        avisosmedicos: 'Desarrollé una aplicación de escritorio multiusuario orientada al sector sanitario-turístico, pensada para equipos que gestionan avisos médicos en hoteles de la Costa del Sol. La herramienta centraliza todo el ciclo de un caso: desde la solicitud inicial (paciente, hotel, habitación, motivo de urgencia, seguro y touroperador) hasta el cierre con diagnóstico, traslado en ambulancia e ingreso hospitalario. Se realiza el envío de alertas a canales de Microsoft Teams mediante webhooks y tarjetas adaptativas. Los datos se persisten en PostgreSQL con respaldo en CSV, lo que permite trabajo en red entre varios puestos.',
+        "interdoc-web": '<a href="https://visita-domicilio.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-desc-link">Interdocs</a> es un servicio médico privado disponible 24/7 para turistas en la Costa del Sol. Ofrece visitas médicas rápidas a hoteles y domicilios en Málaga y Marbella. Trata emergencias comunes (intoxicaciones, quemaduras, infecciones) y proporciona informes médicos para los principales seguros de viaje europeos.',
+        "medical-tourisme": '<a href="https://medical-tourism-one.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-desc-link">MedBridge SPAIN</a> es una agencia de turismo médico de lujo que conecta a pacientes internacionales con la mejor medicina europea. Ofrece gestión integral: cirugías en hospitales premium (Vithas, Quirónsalud), traslados privados, alojamiento 5 estrellas y asesor personal 24/7 en idioma árabe e inglés.'
     },
     en: {
         edfix: 'EVC - <a href="https://edfix.es" target="_blank" rel="noopener noreferrer" class="project-desc-link">EDfix.es</a> is a React one-page landing for a device repair shop in Malaga, linked to the EVCanal YouTube channel. It concentrates customer acquisition (quote form with EmailJS), business info (services, prices, reviews, work gallery, location, and contact), and tech content (channel video, news via GNews, and recommended products) in a single site. It is designed to convert visits into quote requests.',
         wback: 'Wback — Backend API for Real-Time Messaging. Robust, scalable, and containerized REST API designed as the engine for chat and messaging applications. Developed with Python (Django REST Framework), it implements secure JWT authentication, user profile management, and automatic documentation under OpenAPI 3.0.',
-        avisosmedicos: 'I developed a multi-user desktop application oriented to the healthcare-tourism sector, designed for teams managing medical alerts in hotels on the Costa del Sol. The tool centralizes the entire lifecycle of a case: from the initial request (patient, hotel, room, reason for emergency, insurance, and tour operator) to closure with diagnosis, ambulance transfer, and hospital admission. It sends alerts to Microsoft Teams channels via webhooks and adaptive cards. Data is persisted in PostgreSQL with CSV backup, enabling networked work among multiple stations.'
+        avisosmedicos: 'I developed a multi-user desktop application oriented to the healthcare-tourism sector, designed for teams managing medical alerts in hotels on the Costa del Sol. The tool centralizes the entire lifecycle of a case: from the initial request (patient, hotel, room, reason for emergency, insurance, and tour operator) to closure with diagnosis, ambulance transfer, and hospital admission. It sends alerts to Microsoft Teams channels via webhooks and adaptive cards. Data is persisted in PostgreSQL with CSV backup, enabling networked work among multiple stations.',
+        "interdoc-web": '<a href="https://visita-domicilio.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-desc-link">Interdocs</a> is a private medical service available 24/7 for tourists across the Costa del Sol. It offers fast hotel and home visits in Málaga and Marbella, treating common emergencies and providing medical reports for major travel insurances.',
+        "medical-tourisme": '<a href="https://medical-tourism-one.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-desc-link">MedBridge SPAIN</a> is a luxury medical tourism agency connecting international patients with top European medicine. It offers comprehensive management: surgeries in premium hospitals, private transfers, 5-star accommodation, and a 24/7 personal advisor in Arabic and English.'
     },
     fr: {
         edfix: 'EVC - <a href="https://edfix.es" target="_blank" rel="noopener noreferrer" class="project-desc-link">EDfix.es</a> est une landing page React pour un atelier de réparation d\'appareils à Malaga, lié à la chaîne YouTube EVCanal. Elle concentre sur un seul site l\'acquisition de clients (formulaire de devis avec EmailJS), les informations de l\'entreprise (services, prix, avis, galerie de travaux, localisation et contact) et le contenu tech (vidéo de la chaîne, actualités via GNews et produits recommandés). Elle est conçue pour convertir les visites en demandes de devis.',
         wback: 'Wback — API Backend pour la Messagerie en Temps Réel. API REST robuste, évolutive et conteneurisée conçue comme moteur pour les applications de chat et de messagerie. Développée avec Python (Django REST Framework), elle implémente une authentification JWT sécurisée, la gestion des profils d\'utilisateurs et une documentation automatique sous OpenAPI 3.0.',
-        avisosmedicos: 'J\'ai développé une application de bureau multi-utilisateur orientée vers le secteur de la santé et du tourisme, conçue pour les équipes gérant les alertes médicales dans les hôtels de la Costa del Sol. L\'outil centralise tout le cycle d\'un cas : de la demande initiale (patient, hôtel, chambre, motif d\'urgence, assurance et voyagiste) jusqu\'à la clôture avec diagnostic, transfert en ambulance et hospitalisation. Elle envoie des alertes aux canaux Microsoft Teams via des webhooks et des cartes adaptatives. Les données sont persistées dans PostgreSQL avec sauvegarde CSV, permettant le travail en réseau entre plusieurs postes.'
+        avisosmedicos: 'J\'ai développé une application de bureau multi-utilisateur orientée vers le secteur de la santé et du tourisme, conçue pour les équipes gérant les alertes médicales dans les hôtels de la Costa del Sol. L\'outil centralise tout le cycle d\'un cas : de la demande initiale (patient, hôtel, chambre, motif d\'urgence, assurance et voyagiste) jusqu\'à la clôture avec diagnostic, transfert en ambulance et hospitalisation. Elle envoie des alertes aux canaux Microsoft Teams via des webhooks et des cartes adaptatives. Les données sont persistées dans PostgreSQL avec sauvegarde CSV, permettant le travail en réseau entre plusieurs postes.',
+        "interdoc-web": '<a href="https://visita-domicilio.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-desc-link">Interdocs</a> est un service médical privé disponible 24/7 pour les touristes sur la Costa del Sol. Il propose des visites rapides à l\'hôtel et à domicile à Málaga et Marbella, traite les urgences courantes et fournit des rapports médicaux pour les principales assurances.',
+        "medical-tourisme": '<a href="https://medical-tourism-one.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-desc-link">MedBridge SPAIN</a> est une agence de tourisme médical de luxe reliant les patients internationaux à la meilleure médecine européenne. Gestion complète : chirurgies, transferts privés, hébergement 5 étoiles et conseiller personnel 24/7 en arabe et anglais.'
     },
     ar: {
         edfix: 'EVC - <a href="https://edfix.es" target="_blank" rel="noopener noreferrer" class="project-desc-link">EDfix.es</a> هي صفحة هبوط ذات صفحة واحدة مبنية بـ React لورشة إصلاح أجهزة في مالقة، مرتبطة بقناة EVCanal على يوتيوب. تجمع في مكان واحد جذب العملاء (نموذج طلب عروض أسعار باستخدام EmailJS)، ومعلومات الأعمال (الخدمات، الأسعار، المراجعات، معرض الأعمال، الموقع، والاتصال) ومحتوى تقني (فيديو القناة، أخبار عبر GNews ومنتجات موصى بها). تم تصميمها لتحويل الزيارات إلى طلبات عروض أسعار.',
         wback: 'Wback — واجهة برمجة تطبيقات خلفية (Backend API) للمراسلة في الوقت الفعلي. واجهة برمجة تطبيقات REST قوية وقابلة للتطوير ومحواة (Containerized) مصممة كمحرك لتطبيقات الدردشة والمراسلة. تم تطويرها باستخدام بايثون (Django REST Framework)، وتوفر مصادقة JWT آمنة، وإدارة ملفات تعريف المستخدمين، وتوثيق تلقائي تحت مواصفات OpenAPI 3.0.',
-        avisosmedicos: 'قمت بتطوير تطبيق سطح مكتب متعدد المستخدمين موجه لقطاع السياحة الصحية، مصمم للفرق التي تدير التنبيهات الطبية في فنادق كوستا ديل سول. تعمل الأداة على مركزية دورة الحالة بأكملها: من الطلب الأولي (المريض، الفندق، الغرفة، سبب الطوارئ، التأمين، ووكيل السفر) إلى الإغلاق بالتشخيص، ونقل سيارة الإسعاف، ودخول المستشفى. يقوم بإرسال تنبيهات إلى قنوات Microsoft Teams عبر الويب هوكس (webhooks) والبطاقات التكيفية. يتم حفظ البيانات في قاعدة بيانات PostgreSQL مع نسخ احتياطي بتنسيق CSV، مما يتيح العمل الشبكي بين محطات عمل متعددة.'
+        avisosmedicos: 'قمت بتطوير تطبيق سطح مكتب متعدد المستخدمين موجه لقطاع السياحة الصحية، مصمم للفرق التي تدير التنبيهات الطبية في فنادق كوستا ديل سول. تعمل الأداة على مركزية دورة الحالة بأكملها: من الطلب الأولي (المريض، الفندق، الغرفة، سبب الطوارئ، التأمين، ووكيل السفر) إلى الإغلاق بالتشخيص، ونقل سيارة الإسعاف، ودخول المستشفى. يقوم بإرسال تنبيهات إلى قنوات Microsoft Teams عبر الويب هوكس (webhooks) والبطاقات التكيفية. يتم حفظ البيانات في قاعدة بيانات PostgreSQL مع نسخ احتياطي بتنسيق CSV، مما يتيح العمل الشبكي بين محطات عمل متعددة.',
+        "interdoc-web": '<a href="https://visita-domicilio.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-desc-link">إنتردوكس</a> هي خدمة طبية خاصة متاحة على مدار الساعة للسياح في كوستا ديل سول. تقدم زيارات سريعة للفنادق والمنازل في مالقة وماربيا، وتعالج الحالات الطارئة وتوفر تقارير لشركات تأمين السفر.',
+        "medical-tourisme": '<a href="https://medical-tourism-one.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-desc-link">ميدبريدج إسبانيا</a> هي وكالة سياحة طبية فاخرة تربط المرضى الدوليين بأفضل الخدمات الطبية. تقدم إدارة شاملة: عمليات جراحية، نقل خاص، إقامة 5 نجوم، ومستشار شخصي يتحدث العربية 24/7.'
     }
 };
 
@@ -164,7 +180,7 @@ const translations = {
         hero_desc: "Apasionado por la tecnología, construyendo soluciones web funcionales y elegantes. Especializado en Python, Django y React. Siempre aprendiendo y mejorando mis habilidades en el desarrollo de software.",
         btn_projects: "Ver Proyectos",
         about_title: "Sobre Mí",
-        about_p1: "Soy un <strong>Desarrollador Full Stack</strong> con una base sólida en programación y un interés enorme en crear herramientas digitales. Me considero una persona curiosa, proactiva y que disfruta trabajando en equipo para resolver problemas complejos.",
+        about_p1: "<strong>Desarrollador Full Stack</strong> con una base sólida en programación y un interés enorme en crear herramientas digitales. Me considero una persona curiosa, proactiva y que disfruta trabajando en equipo para resolver problemas complejos.",
         about_p2: "Actualmente me enfoco en desarrollar aplicaciones usando tecnologías como <strong>JavaScript, Python y Java</strong>. ¡Estoy buscando mi próxima oportunidad para crecer profesionalmente y aportar valor en un entorno real!",
         projects_title: "Mis Proyectos",
         contact_title: "¿Trabajamos juntos?",
@@ -199,7 +215,7 @@ const translations = {
         hero_desc: "Passionate about technology, building functional and elegant web solutions. Specialized in Python, Django, and React. Always learning and improving my software development skills.",
         btn_projects: "View Projects",
         about_title: "About Me",
-        about_p1: "I am a <strong>Full Stack Developer</strong> with a solid foundation in programming and a huge interest in creating digital tools. I consider myself a curious, proactive person who enjoys working in a team to solve complex problems.",
+        about_p1: "<strong>Full Stack Developer</strong> with a solid foundation in programming and a huge interest in creating digital tools. I consider myself a curious, proactive person who enjoys working in a team to solve complex problems.",
         about_p2: "Currently, I focus on developing applications using technologies like <strong>JavaScript, Python, and Java</strong>. I am looking for my next opportunity to grow professionally and add value in a real-world environment!",
         projects_title: "My Projects",
         contact_title: "Let's work together!",
@@ -234,7 +250,7 @@ const translations = {
         hero_desc: "Passionné par la technologie, je construis des solutions web fonctionnelles et élégantes. Spécialisé en Python, Django et React. Toujours en train d'apprendre et d'améliorer mes compétences en développement logiciel.",
         btn_projects: "Voir les Projets",
         about_title: "À Propos de Moi",
-        about_p1: "Je suis un <strong>Développeur Full Stack</strong> avec des bases solides en programmation et un grand intérêt pour la création d'outils numériques. Je me considère comme curieux, proactif et j'aime travailler en équipe pour résoudre des problèmes complexes.",
+        about_p1: "<strong>Développeur Full Stack</strong> avec des bases solides en programmation et un grand intérêt pour la création d'outils numériques. Je me considère comme une personne curieuse, proactive et qui aime travailler en équipe pour résoudre des problèmes complexes.",
         about_p2: "Actuellement, je me concentre sur le développement d'applications utilisant des technologies comme <strong>JavaScript, Python et Java</strong>. Je recherche ma prochaine opportunité pour grandir professionnellement et apporter de la valeur dans un environnement réel !",
         projects_title: "Mes Projets",
         contact_title: "Travaillons ensemble !",
@@ -269,7 +285,7 @@ const translations = {
         hero_desc: "شغوف بالتكنولوجيا، أقوم ببناء حلول ويب عملية وأنيقة. متخصص في بايثون، ديجانغو، ورياكت. دائم التعلم وتحسين مهاراتي في تطوير البرمجيات.",
         btn_projects: "عرض المشاريع",
         about_title: "من أنا",
-        about_p1: "أنا <strong>مطور ويب متكامل</strong> لدي أساس قوي في البرمجة واهتمام كبير بإنشاء الأدوات الرقمية. أعتبر نفسي شخصاً فضولياً، مبادراً، وأستمتع بالعمل الجماعي لحل المشكلات المعقدة.",
+        about_p1: "<strong>مطور Full Stack</strong> بأساس قوي في البرمجة واهتمام كبير بإنشاء أدوات رقمية. أعتبر نفسي شخصًا فضوليًا واستباقيًا يستمتع بالعمل في فريق لحل المشكلات المعقدة.",
         about_p2: "أركز حالياً على تطوير التطبيقات باستخدام تقنيات مثل <strong>جافا سكريبت، بايثون، وجافا</strong>. أبحث عن فرصتي القادمة للنمو مهنياً وتقديم الإضافة في بيئة عمل حقيقية!",
         projects_title: "مشاريعي",
         contact_title: "هل نعمل معاً؟",
@@ -333,7 +349,7 @@ function setupProjectVideo(video, fallback) {
     }
 }
 
-function createProjectCard({ name, description, language, repoUrl, descriptionIsHtml = false, videoInstruction }) {
+function createProjectCard({ name, description, language, repoUrl, liveUrl, descriptionIsHtml = false, videoInstruction }) {
     const primaryLang = Array.isArray(language) ? language[0] : language;
     const iconClass = getLanguageIcon(primaryLang);
     const videoSrc = getVideoSrc(name);
@@ -369,7 +385,10 @@ function createProjectCard({ name, description, language, repoUrl, descriptionIs
                 <div class="project-tech-group">
                     ${techHTML}
                 </div>
-                <a href="${repoUrl}" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Ver código en GitHub"><i class="fa-brands fa-github"></i></a>
+                <div class="project-links" style="display: flex; gap: 12px; align-items: center;">
+                    ${liveUrl ? `<a href="${liveUrl}" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Visitar sitio web"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>` : ''}
+                    <a href="${repoUrl}" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Ver código en GitHub"><i class="fa-brands fa-github"></i></a>
+                </div>
             </div>
         </div>
         <div class="project-media">
@@ -414,6 +433,8 @@ function renderProjects(repos) {
         const customTags = projectTechTags[repoKey];
         const tags = customTags || (repo.language ? [repo.language] : (repo.lang ? [repo.lang] : ["Code"]));
 
+        const liveUrl = typeof projectLiveUrls !== 'undefined' ? projectLiveUrls[repoKey] : null;
+
         projectsContainer.appendChild(
             createProjectCard({
                 name: repoName,
@@ -421,6 +442,7 @@ function renderProjects(repos) {
                 descriptionIsHtml: Boolean(customDescription),
                 language: tags,
                 repoUrl: repo.html_url || `https://github.com/${githubUsername}/${repoName}`,
+                liveUrl: liveUrl,
                 videoInstruction,
             })
         );
@@ -429,7 +451,7 @@ function renderProjects(repos) {
 
 async function fetchGitHubProjects() {
     try {
-        const response = await fetch(`https://api.github.com/users/${githubUsername}/repos?sort=updated&per_page=6`);
+        const response = await fetch(`https://api.github.com/users/${githubUsername}/repos?sort=updated&per_page=100`);
         if (!response.ok) {
             throw new Error("Network response was not ok");
         }
@@ -441,11 +463,20 @@ async function fetchGitHubProjects() {
                 !excludedRepos.includes(repo.name.toLowerCase())
         );
 
-        // Forzar a que AvisosMedicos sea el primero de la lista
+        // Forzar orden específico de proyectos destacados
         validRepos.sort((a, b) => {
-            if (a.name.toLowerCase() === "avisosmedicos") return -1;
-            if (b.name.toLowerCase() === "avisosmedicos") return 1;
-            return 0;
+            const priority = { "interdoc-web": -3, "medical-tourisme": -2, "avisosmedicos": -1 };
+            const aName = a.name.toLowerCase();
+            const bName = b.name.toLowerCase();
+            const aPrio = priority[aName] || 0;
+            const bPrio = priority[bName] || 0;
+            
+            if (aPrio !== bPrio) {
+                return aPrio - bPrio;
+            }
+            
+            // Si tienen la misma prioridad (0), ordenar por actualización reciente (comportamiento por defecto)
+            return new Date(b.updated_at) - new Date(a.updated_at);
         });
 
         currentRepos = validRepos;
@@ -454,6 +485,8 @@ async function fetchGitHubProjects() {
         console.error("Error fetching GitHub repos:", error);
 
         const manualRepos = [
+            { name: "interdoc-web", lang: "TypeScript", desc: "Interdoc Web (Desplegado en Vercel)" },
+            { name: "medical-tourisme", lang: "TypeScript", desc: "Medical Tourisme (Desplegado en Vercel)" },
             { name: "AvisosMedicos", lang: "Python", desc: "Proyecto AvisosMedicos" },
             { name: "edfix", lang: "JavaScript", desc: "Proyecto EVC-EDfix Website" },
             { name: "proyecto", lang: "Java", desc: "Proyecto en Java" },

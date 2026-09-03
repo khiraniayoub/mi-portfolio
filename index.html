@@ -17,7 +17,7 @@
 
     <nav id="navbar">
         <a href="#hero" class="logo">
-            <img src="ak-logo.webp" alt="AK Logo" class="nav-logo">
+            <img src="ak-logo.png" alt="AK Logo" class="nav-logo">
         </a>
         <ul class="nav-links">
             <li><a href="#hero" data-translate="nav_home">Inicio</a></li>
@@ -62,12 +62,13 @@
                 <h2 class="subtitle" data-translate="hero_subtitle">HOLA, SOY</h2>
                 <h1 class="title" data-translate="hero_name">Ayoub Khirani</h1>
                 <h3 class="role secondary-header" data-translate="hero_role">Desarrollador Full Stack</h3>
-                <p class="description refined-text" data-translate="hero_desc">Apasionado por la tecnología, construyendo soluciones web
+                <p class="description refined-text" data-translate="hero_desc">Apasionado por la tecnología,
+                    construyendo soluciones web
                     funcionales y elegantes. Especializado en Python, Django y React. Siempre aprendiendo y
                     mejorando mis habilidades en el desarrollo de software.</p>
                 <div class="cta-buttons">
-                    <a href="#projects" class="btn primary-btn"><span data-translate="btn_projects">Ver Proyectos</span> <i
-                            class="fa-solid fa-arrow-right-long"></i></a>
+                    <a href="#projects" class="btn primary-btn"><span data-translate="btn_projects">Ver Proyectos</span>
+                        <i class="fa-solid fa-arrow-right-long"></i></a>
                     <a href="https://github.com/khiraniayoub" target="_blank" class="btn secondary-btn github-btn"><i
                             class="fa-brands fa-github"></i> GitHub</a>
                 </div>
@@ -83,10 +84,11 @@
             <h2 class="section-title" data-translate="about_title">Sobre Mí</h2>
             <div class="about-container">
                 <div class="about-text">
-                    <p data-translate="about_p1">Soy un <strong>Desarrollador Full Stack</strong> con una base sólida en programación y un interés
-                        enorme en crear herramientas digitales. Me considero una persona curiosa, proactiva y que
+                    <p data-translate="about_p1"><strong>Desarrollador Full Stack</strong> con una base sólida en
+                        programación y un interés enorme en crear herramientas digitales. Me considero una persona curiosa, proactiva y que
                         disfruta trabajando en equipo para resolver problemas complejos.</p>
-                    <p data-translate="about_p2">Actualmente me enfoco en desarrollar aplicaciones usando tecnologías como <strong>JavaScript,
+                    <p data-translate="about_p2">Actualmente me enfoco en desarrollar aplicaciones usando tecnologías
+                        como <strong>JavaScript,
                             Python y Java</strong>. ¡Estoy buscando mi próxima oportunidad para crecer profesionalmente
                         y aportar valor en un entorno real!</p>
                 </div>
@@ -114,7 +116,8 @@
         <section id="contact">
             <div class="contact-box">
                 <h2 class="section-title" data-translate="contact_title">¿Trabajamos juntos?</h2>
-                <p data-translate="contact_desc">Estoy disponible para nuevas oportunidades y proyectos. Si tienes alguna pregunta o simplemente
+                <p data-translate="contact_desc">Estoy disponible para nuevas oportunidades y proyectos. Si tienes
+                    alguna pregunta o simplemente
                     quieres saludar, ¡no dudes en escribirme!</p>
                 <div class="contact-buttons">
                     <button id="contact-btn-trigger" class="btn primary-btn contact-main-btn">
@@ -143,19 +146,23 @@
             <form id="contact-form">
                 <div class="form-group">
                     <label for="form-name" data-translate="form_name">Nombre</label>
-                    <input type="text" id="form-name" required data-translate-placeholder="form_placeholder_name" placeholder="Tu nombre">
+                    <input type="text" id="form-name" required data-translate-placeholder="form_placeholder_name"
+                        placeholder="Tu nombre">
                 </div>
                 <div class="form-group">
                     <label for="form-email" data-translate="form_email">Email</label>
-                    <input type="email" id="form-email" required data-translate-placeholder="form_placeholder_email" placeholder="tu@email.com">
+                    <input type="email" id="form-email" required data-translate-placeholder="form_placeholder_email"
+                        placeholder="tu@email.com">
                 </div>
                 <div class="form-group">
                     <label for="form-subject" data-translate="form_subject">Asunto</label>
-                    <input type="text" id="form-subject" required data-translate-placeholder="form_placeholder_subject" placeholder="Asunto del mensaje">
+                    <input type="text" id="form-subject" required data-translate-placeholder="form_placeholder_subject"
+                        placeholder="Asunto del mensaje">
                 </div>
                 <div class="form-group">
                     <label for="form-message" data-translate="form_message">Mensaje</label>
-                    <textarea id="form-message" rows="5" required data-translate-placeholder="form_placeholder_message" placeholder="Escribe tu mensaje aquí..."></textarea>
+                    <textarea id="form-message" rows="5" required data-translate-placeholder="form_placeholder_message"
+                        placeholder="Escribe tu mensaje aquí..."></textarea>
                 </div>
                 <button type="submit" class="btn primary-btn submit-btn">
                     <span data-translate="form_send_btn">Enviar Mensaje</span> <i class="fa-solid fa-paper-plane"></i>
@@ -170,17 +177,23 @@
 
     <!-- Color Switcher Panel -->
     <div class="color-switcher-container" id="color-switcher-container">
-        <button class="color-toggle-btn" id="color-toggle-btn" aria-label="Cambiar tema de color" title="Personalizar color">
+        <button class="color-toggle-btn" id="color-toggle-btn" aria-label="Cambiar tema de color"
+            title="Personalizar color">
             <i class="fa-solid fa-palette"></i>
         </button>
         <div class="color-panel" id="color-panel">
             <h4 data-translate="color_panel_title">Color de Acento</h4>
             <div class="color-options">
-                <button class="color-btn active" data-color="cyan" style="background-color: #38bdf8;" aria-label="Cian" title="Cian"></button>
-                <button class="color-btn" data-color="purple" style="background-color: #a78bfa;" aria-label="Morado" title="Morado"></button>
-                <button class="color-btn" data-color="emerald" style="background-color: #2dd4bf;" aria-label="Verde Esmeralda" title="Verde Esmeralda"></button>
-                <button class="color-btn" data-color="orange" style="background-color: #fb923c;" aria-label="Naranja" title="Naranja"></button>
-                <button class="color-btn" data-color="rose" style="background-color: #fb7185;" aria-label="Rosa Rubí" title="Rosa Rubí"></button>
+                <button class="color-btn active" data-color="cyan" style="background-color: #38bdf8;" aria-label="Cian"
+                    title="Cian"></button>
+                <button class="color-btn" data-color="purple" style="background-color: #a78bfa;" aria-label="Morado"
+                    title="Morado"></button>
+                <button class="color-btn" data-color="emerald" style="background-color: #2dd4bf;"
+                    aria-label="Verde Esmeralda" title="Verde Esmeralda"></button>
+                <button class="color-btn" data-color="orange" style="background-color: #fb923c;" aria-label="Naranja"
+                    title="Naranja"></button>
+                <button class="color-btn" data-color="rose" style="background-color: #fb7185;" aria-label="Rosa Rubí"
+                    title="Rosa Rubí"></button>
             </div>
         </div>
     </div>
